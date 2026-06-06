@@ -1,0 +1,47 @@
+[
+  {
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 3309673.22,
+    "profit": 807145.05,
+    "margin": 24.39,
+    "qty": 2111,
+    "orders": 1059
+  },
+  {
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 2425992.94,
+    "profit": 449534.81,
+    "margin": 18.53,
+    "qty": 2220,
+    "orders": 1160
+  },
+  {
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 60320.21,
+    "profit": 37760.17,
+    "margin": 62.6,
+    "qty": 7817,
+    "orders": 7221
+  },
+  {
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 28654.16,
+    "profit": 15935.33,
+    "margin": 55.61,
+    "qty": 6815,
+    "orders": 4688
+  },
+  {
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 51229.45,
+    "profit": -1203.2,
+    "margin": -2.35,
+    "qty": 8311,
+    "orders": 3382
+  }
+]

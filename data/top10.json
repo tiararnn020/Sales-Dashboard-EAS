@@ -1,0 +1,83 @@
+[
+  {
+    "product": "Mountain-200 Black, 46",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 3309673.22,
+    "profit": 807145.05,
+    "margin": 24.39,
+    "qty": 2111
+  },
+  {
+    "product": "Road-150 Red, 56",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 1847818.63,
+    "profit": 406079.28,
+    "margin": 21.98,
+    "qty": 664
+  },
+  {
+    "product": "Road-750 Black, 48",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 578174.31,
+    "profit": 43455.54,
+    "margin": 7.52,
+    "qty": 1556
+  },
+  {
+    "product": "HL Road Tire",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 27970.8,
+    "profit": 17509.72,
+    "margin": 62.6,
+    "qty": 858
+  },
+  {
+    "product": "Water Bottle - 30 oz.",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 28654.16,
+    "profit": 15935.33,
+    "margin": 55.61,
+    "qty": 6815
+  },
+  {
+    "product": "Mountain Tire Tube",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 15444.05,
+    "profit": 9667.85,
+    "margin": 62.6,
+    "qty": 3095
+  },
+  {
+    "product": "Road Tire Tube",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 9480.24,
+    "profit": 5934.54,
+    "margin": 62.6,
+    "qty": 2376
+  },
+  {
+    "product": "Touring Tire Tube",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 7425.12,
+    "profit": 4648.07,
+    "margin": 62.6,
+    "qty": 1488
+  },
+  {
+    "product": "AWC Logo Cap",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 51229.45,
+    "profit": -1203.2,
+    "margin": -2.35,
+    "qty": 8311
+  }
+]

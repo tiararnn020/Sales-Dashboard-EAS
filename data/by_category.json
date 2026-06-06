@@ -1,0 +1,26 @@
+[
+  {
+    "category": "Bikes",
+    "sales": 5735666.16,
+    "profit": 1256679.87,
+    "margin": 21.91,
+    "qty": 4331,
+    "orders": 2219
+  },
+  {
+    "category": "Accessories",
+    "sales": 88974.37,
+    "profit": 53695.5,
+    "margin": 60.35,
+    "qty": 14632,
+    "orders": 11753
+  },
+  {
+    "category": "Clothing",
+    "sales": 51229.45,
+    "profit": -1203.2,
+    "margin": -2.35,
+    "qty": 8311,
+    "orders": 3382
+  }
+]

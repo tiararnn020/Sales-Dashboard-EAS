@@ -1,0 +1,335 @@
+[
+  {
+    "month_key": "2001-07",
+    "label": "Jul 2001",
+    "year": 2001,
+    "month": 7,
+    "sales": 83938.98,
+    "profit": 20743.24,
+    "orders": 34
+  },
+  {
+    "month_key": "2001-08",
+    "label": "Aug 2001",
+    "year": 2001,
+    "month": 8,
+    "sales": 164415.42,
+    "profit": 31378.84,
+    "orders": 61
+  },
+  {
+    "month_key": "2001-09",
+    "label": "Sep 2001",
+    "year": 2001,
+    "month": 9,
+    "sales": 111356.85,
+    "profit": 21860.26,
+    "orders": 43
+  },
+  {
+    "month_key": "2001-10",
+    "label": "Oct 2001",
+    "year": 2001,
+    "month": 10,
+    "sales": 137685.64,
+    "profit": 33155.44,
+    "orders": 47
+  },
+  {
+    "month_key": "2001-11",
+    "label": "Nov 2001",
+    "year": 2001,
+    "month": 11,
+    "sales": 196791.28,
+    "profit": 35339.6,
+    "orders": 72
+  },
+  {
+    "month_key": "2001-12",
+    "label": "Dec 2001",
+    "year": 2001,
+    "month": 12,
+    "sales": 177302.66,
+    "profit": 44260.37,
+    "orders": 65
+  },
+  {
+    "month_key": "2002-01",
+    "label": "Jan 2002",
+    "year": 2002,
+    "month": 1,
+    "sales": 149701.35,
+    "profit": 43165.3,
+    "orders": 48
+  },
+  {
+    "month_key": "2002-02",
+    "label": "Feb 2002",
+    "year": 2002,
+    "month": 2,
+    "sales": 147924.81,
+    "profit": 21436.34,
+    "orders": 51
+  },
+  {
+    "month_key": "2002-03",
+    "label": "Mar 2002",
+    "year": 2002,
+    "month": 3,
+    "sales": 173478.71,
+    "profit": 42881.57,
+    "orders": 55
+  },
+  {
+    "month_key": "2002-04",
+    "label": "Apr 2002",
+    "year": 2002,
+    "month": 4,
+    "sales": 134791.9,
+    "profit": 30295.93,
+    "orders": 46
+  },
+  {
+    "month_key": "2002-05",
+    "label": "May 2002",
+    "year": 2002,
+    "month": 5,
+    "sales": 216045.62,
+    "profit": 39457.64,
+    "orders": 72
+  },
+  {
+    "month_key": "2002-06",
+    "label": "Jun 2002",
+    "year": 2002,
+    "month": 6,
+    "sales": 159466.45,
+    "profit": 41566.17,
+    "orders": 68
+  },
+  {
+    "month_key": "2002-07",
+    "label": "Jul 2002",
+    "year": 2002,
+    "month": 7,
+    "sales": 115011.47,
+    "profit": 20999.05,
+    "orders": 52
+  },
+  {
+    "month_key": "2002-08",
+    "label": "Aug 2002",
+    "year": 2002,
+    "month": 8,
+    "sales": 131643.87,
+    "profit": 24787.67,
+    "orders": 83
+  },
+  {
+    "month_key": "2002-09",
+    "label": "Sep 2002",
+    "year": 2002,
+    "month": 9,
+    "sales": 120484.59,
+    "profit": 16441.43,
+    "orders": 52
+  },
+  {
+    "month_key": "2002-10",
+    "label": "Oct 2002",
+    "year": 2002,
+    "month": 10,
+    "sales": 80756.17,
+    "profit": 14708.01,
+    "orders": 46
+  },
+  {
+    "month_key": "2002-11",
+    "label": "Nov 2002",
+    "year": 2002,
+    "month": 11,
+    "sales": 119186.55,
+    "profit": 18492.2,
+    "orders": 72
+  },
+  {
+    "month_key": "2002-12",
+    "label": "Dec 2002",
+    "year": 2002,
+    "month": 12,
+    "sales": 122410.47,
+    "profit": 30583.51,
+    "orders": 73
+  },
+  {
+    "month_key": "2003-01",
+    "label": "Jan 2003",
+    "year": 2003,
+    "month": 1,
+    "sales": 95109.19,
+    "profit": 24998.63,
+    "orders": 47
+  },
+  {
+    "month_key": "2003-02",
+    "label": "Feb 2003",
+    "year": 2003,
+    "month": 2,
+    "sales": 136350.48,
+    "profit": 30592.52,
+    "orders": 65
+  },
+  {
+    "month_key": "2003-03",
+    "label": "Mar 2003",
+    "year": 2003,
+    "month": 3,
+    "sales": 101865.3,
+    "profit": 24915.93,
+    "orders": 53
+  },
+  {
+    "month_key": "2003-04",
+    "label": "Apr 2003",
+    "year": 2003,
+    "month": 4,
+    "sales": 103618.95,
+    "profit": 22131.29,
+    "orders": 54
+  },
+  {
+    "month_key": "2003-05",
+    "label": "May 2003",
+    "year": 2003,
+    "month": 5,
+    "sales": 124190.02,
+    "profit": 30025.94,
+    "orders": 87
+  },
+  {
+    "month_key": "2003-06",
+    "label": "Jun 2003",
+    "year": 2003,
+    "month": 6,
+    "sales": 113216.7,
+    "profit": 22856.81,
+    "orders": 62
+  },
+  {
+    "month_key": "2003-07",
+    "label": "Jul 2003",
+    "year": 2003,
+    "month": 7,
+    "sales": 172974.73,
+    "profit": 37496.89,
+    "orders": 294
+  },
+  {
+    "month_key": "2003-08",
+    "label": "Aug 2003",
+    "year": 2003,
+    "month": 8,
+    "sales": 233807.04,
+    "profit": 46020.94,
+    "orders": 1078
+  },
+  {
+    "month_key": "2003-09",
+    "label": "Sep 2003",
+    "year": 2003,
+    "month": 9,
+    "sales": 228904.52,
+    "profit": 44644.57,
+    "orders": 1042
+  },
+  {
+    "month_key": "2003-10",
+    "label": "Oct 2003",
+    "year": 2003,
+    "month": 10,
+    "sales": 196775.13,
+    "profit": 44590.74,
+    "orders": 1086
+  },
+  {
+    "month_key": "2003-11",
+    "label": "Nov 2003",
+    "year": 2003,
+    "month": 11,
+    "sales": 200773.79,
+    "profit": 46636.56,
+    "orders": 1079
+  },
+  {
+    "month_key": "2003-12",
+    "label": "Dec 2003",
+    "year": 2003,
+    "month": 12,
+    "sales": 261181.93,
+    "profit": 62166.29,
+    "orders": 1272
+  },
+  {
+    "month_key": "2004-01",
+    "label": "Jan 2004",
+    "year": 2004,
+    "month": 1,
+    "sales": 186265.19,
+    "profit": 49912.57,
+    "orders": 1130
+  },
+  {
+    "month_key": "2004-02",
+    "label": "Feb 2004",
+    "year": 2004,
+    "month": 2,
+    "sales": 218841.76,
+    "profit": 52639.54,
+    "orders": 1147
+  },
+  {
+    "month_key": "2004-03",
+    "label": "Mar 2004",
+    "year": 2004,
+    "month": 3,
+    "sales": 218652.36,
+    "profit": 51161.26,
+    "orders": 1167
+  },
+  {
+    "month_key": "2004-04",
+    "label": "Apr 2004",
+    "year": 2004,
+    "month": 4,
+    "sales": 209789.9,
+    "profit": 50263.16,
+    "orders": 1213
+  },
+  {
+    "month_key": "2004-05",
+    "label": "May 2004",
+    "year": 2004,
+    "month": 5,
+    "sales": 274591.65,
+    "profit": 71111.42,
+    "orders": 1308
+  },
+  {
+    "month_key": "2004-06",
+    "label": "Jun 2004",
+    "year": 2004,
+    "month": 6,
+    "sales": 251090.15,
+    "profit": 62363.3,
+    "orders": 1298
+  },
+  {
+    "month_key": "2004-07",
+    "label": "Jul 2004",
+    "year": 2004,
+    "month": 7,
+    "sales": 5478.39,
+    "profit": 3091.24,
+    "orders": 651
+  }
+]

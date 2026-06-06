@@ -1,0 +1,36 @@
+{
+  "years": [
+    2001,
+    2002,
+    2003,
+    2004
+  ],
+  "categories": [
+    "Accessories",
+    "Bikes",
+    "Clothing"
+  ],
+  "subcategories": [
+    "Bottles and Cages",
+    "Caps",
+    "Mountain Bikes",
+    "Road Bikes",
+    "Tires and Tubes"
+  ],
+  "territories": [
+    "Australia",
+    "Canada",
+    "Central",
+    "France",
+    "Germany",
+    "Northeast",
+    "Northwest",
+    "Southeast",
+    "Southwest",
+    "United Kingdom"
+  ],
+  "segments": [
+    "Individu",
+    "Shop"
+  ]
+}

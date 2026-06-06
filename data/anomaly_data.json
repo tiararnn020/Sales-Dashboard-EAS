@@ -1,0 +1,890 @@
+[
+  {
+    "month_key": "2001-07",
+    "label": "Jul 2001",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 207.46,
+    "profit": -20.75
+  },
+  {
+    "month_key": "2001-07",
+    "label": "Jul 2001",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 83731.52,
+    "profit": 20763.99
+  },
+  {
+    "month_key": "2001-08",
+    "label": "Aug 2001",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 530.66,
+    "profit": -56.98
+  },
+  {
+    "month_key": "2001-08",
+    "label": "Aug 2001",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 163884.77,
+    "profit": 31435.82
+  },
+  {
+    "month_key": "2001-09",
+    "label": "Sep 2001",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 430.48,
+    "profit": -43.05
+  },
+  {
+    "month_key": "2001-09",
+    "label": "Sep 2001",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 110926.37,
+    "profit": 21903.31
+  },
+  {
+    "month_key": "2001-10",
+    "label": "Oct 2001",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 280.07,
+    "profit": -28.01
+  },
+  {
+    "month_key": "2001-10",
+    "label": "Oct 2001",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 137405.57,
+    "profit": 33183.45
+  },
+  {
+    "month_key": "2001-11",
+    "label": "Nov 2001",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 702.09,
+    "profit": -73.82
+  },
+  {
+    "month_key": "2001-11",
+    "label": "Nov 2001",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 196089.2,
+    "profit": 35413.43
+  },
+  {
+    "month_key": "2001-12",
+    "label": "Dec 2001",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 536.12,
+    "profit": -57.22
+  },
+  {
+    "month_key": "2001-12",
+    "label": "Dec 2001",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 176766.54,
+    "profit": 44317.59
+  },
+  {
+    "month_key": "2002-01",
+    "label": "Jan 2002",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 149571.69,
+    "profit": 43178.27
+  },
+  {
+    "month_key": "2002-01",
+    "label": "Jan 2002",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 129.66,
+    "profit": -12.97
+  },
+  {
+    "month_key": "2002-02",
+    "label": "Feb 2002",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 500.09,
+    "profit": -53.32
+  },
+  {
+    "month_key": "2002-02",
+    "label": "Feb 2002",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 147424.72,
+    "profit": 21489.66
+  },
+  {
+    "month_key": "2002-03",
+    "label": "Mar 2002",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 290.44,
+    "profit": -29.05
+  },
+  {
+    "month_key": "2002-03",
+    "label": "Mar 2002",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 173188.27,
+    "profit": 42910.62
+  },
+  {
+    "month_key": "2002-04",
+    "label": "Apr 2002",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 248.95,
+    "profit": -24.9
+  },
+  {
+    "month_key": "2002-04",
+    "label": "Apr 2002",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 134542.95,
+    "profit": 30320.83
+  },
+  {
+    "month_key": "2002-05",
+    "label": "May 2002",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 633.77,
+    "profit": -79.38
+  },
+  {
+    "month_key": "2002-05",
+    "label": "May 2002",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 215411.85,
+    "profit": 39537.02
+  },
+  {
+    "month_key": "2002-06",
+    "label": "Jun 2002",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 591.26,
+    "profit": -59.13
+  },
+  {
+    "month_key": "2002-06",
+    "label": "Jun 2002",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 158875.19,
+    "profit": 41625.3
+  },
+  {
+    "month_key": "2002-07",
+    "label": "Jul 2002",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 1081.61,
+    "profit": -42.77
+  },
+  {
+    "month_key": "2002-07",
+    "label": "Jul 2002",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 113929.86,
+    "profit": 21041.82
+  },
+  {
+    "month_key": "2002-08",
+    "label": "Aug 2002",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 129912.82,
+    "profit": 24860.87
+  },
+  {
+    "month_key": "2002-08",
+    "label": "Aug 2002",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 1731.05,
+    "profit": -73.2
+  },
+  {
+    "month_key": "2002-09",
+    "label": "Sep 2002",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 1119.71,
+    "profit": -83.13
+  },
+  {
+    "month_key": "2002-09",
+    "label": "Sep 2002",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 119364.89,
+    "profit": 16524.56
+  },
+  {
+    "month_key": "2002-10",
+    "label": "Oct 2002",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 798.72,
+    "profit": -6.65
+  },
+  {
+    "month_key": "2002-10",
+    "label": "Oct 2002",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 79957.45,
+    "profit": 14714.66
+  },
+  {
+    "month_key": "2002-11",
+    "label": "Nov 2002",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 1158.5,
+    "profit": -12.95
+  },
+  {
+    "month_key": "2002-11",
+    "label": "Nov 2002",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 118028.05,
+    "profit": 18505.15
+  },
+  {
+    "month_key": "2002-12",
+    "label": "Dec 2002",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 1103.85,
+    "profit": -46.68
+  },
+  {
+    "month_key": "2002-12",
+    "label": "Dec 2002",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 121306.61,
+    "profit": 30630.19
+  },
+  {
+    "month_key": "2003-01",
+    "label": "Jan 2003",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 440.85,
+    "profit": -3.67
+  },
+  {
+    "month_key": "2003-01",
+    "label": "Jan 2003",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 94668.34,
+    "profit": 25002.31
+  },
+  {
+    "month_key": "2003-02",
+    "label": "Feb 2003",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 135650.3,
+    "profit": 30598.35
+  },
+  {
+    "month_key": "2003-02",
+    "label": "Feb 2003",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 700.18,
+    "profit": -5.83
+  },
+  {
+    "month_key": "2003-03",
+    "label": "Mar 2003",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 101225.45,
+    "profit": 24924.56
+  },
+  {
+    "month_key": "2003-03",
+    "label": "Mar 2003",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 639.85,
+    "profit": -8.63
+  },
+  {
+    "month_key": "2003-04",
+    "label": "Apr 2003",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 754.22,
+    "profit": -9.31
+  },
+  {
+    "month_key": "2003-04",
+    "label": "Apr 2003",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 102864.73,
+    "profit": 22140.6
+  },
+  {
+    "month_key": "2003-05",
+    "label": "May 2003",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 1244.13,
+    "profit": -31.91
+  },
+  {
+    "month_key": "2003-05",
+    "label": "May 2003",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 122945.89,
+    "profit": 30057.85
+  },
+  {
+    "month_key": "2003-06",
+    "label": "Jun 2003",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 926.12,
+    "profit": -25.68
+  },
+  {
+    "month_key": "2003-06",
+    "label": "Jun 2003",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 112290.58,
+    "profit": 22882.49
+  },
+  {
+    "month_key": "2003-07",
+    "label": "Jul 2003",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 1199.66,
+    "profit": 553.92
+  },
+  {
+    "month_key": "2003-07",
+    "label": "Jul 2003",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 1745.27,
+    "profit": -407.57
+  },
+  {
+    "month_key": "2003-07",
+    "label": "Jul 2003",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 121175.47,
+    "profit": 36040.74
+  },
+  {
+    "month_key": "2003-07",
+    "label": "Jul 2003",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 47612.27,
+    "profit": 532.27
+  },
+  {
+    "month_key": "2003-07",
+    "label": "Jul 2003",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 1242.06,
+    "profit": 777.53
+  },
+  {
+    "month_key": "2003-08",
+    "label": "Aug 2003",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 5148.2,
+    "profit": 3222.75
+  },
+  {
+    "month_key": "2003-08",
+    "label": "Aug 2003",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 58663.16,
+    "profit": 1960.98
+  },
+  {
+    "month_key": "2003-08",
+    "label": "Aug 2003",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 163862.29,
+    "profit": 39916.14
+  },
+  {
+    "month_key": "2003-08",
+    "label": "Aug 2003",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 3627.21,
+    "profit": -373.88
+  },
+  {
+    "month_key": "2003-08",
+    "label": "Aug 2003",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 2506.18,
+    "profit": 1294.95
+  },
+  {
+    "month_key": "2003-09",
+    "label": "Sep 2003",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 2372.05,
+    "profit": 1254.14
+  },
+  {
+    "month_key": "2003-09",
+    "label": "Sep 2003",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 3196.89,
+    "profit": -340.4
+  },
+  {
+    "month_key": "2003-09",
+    "label": "Sep 2003",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 179468.22,
+    "profit": 37994.33
+  },
+  {
+    "month_key": "2003-09",
+    "label": "Sep 2003",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 39311.27,
+    "profit": 2884.41
+  },
+  {
+    "month_key": "2003-09",
+    "label": "Sep 2003",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 4556.09,
+    "profit": 2852.09
+  },
+  {
+    "month_key": "2003-10",
+    "label": "Oct 2003",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 2163.91,
+    "profit": 1204.63
+  },
+  {
+    "month_key": "2003-10",
+    "label": "Oct 2003",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 2414.55,
+    "profit": -8.26
+  },
+  {
+    "month_key": "2003-10",
+    "label": "Oct 2003",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 138158.4,
+    "profit": 36747.91
+  },
+  {
+    "month_key": "2003-10",
+    "label": "Oct 2003",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 48610.33,
+    "profit": 3248.58
+  },
+  {
+    "month_key": "2003-10",
+    "label": "Oct 2003",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 5427.94,
+    "profit": 3397.87
+  },
+  {
+    "month_key": "2003-11",
+    "label": "Nov 2003",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 4976.55,
+    "profit": 3115.3
+  },
+  {
+    "month_key": "2003-11",
+    "label": "Nov 2003",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 43847.19,
+    "profit": 3296.54
+  },
+  {
+    "month_key": "2003-11",
+    "label": "Nov 2003",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 146879.36,
+    "profit": 39208.97
+  },
+  {
+    "month_key": "2003-11",
+    "label": "Nov 2003",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 2888.47,
+    "profit": -164.26
+  },
+  {
+    "month_key": "2003-11",
+    "label": "Nov 2003",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 2182.22,
+    "profit": 1180.02
+  },
+  {
+    "month_key": "2003-12",
+    "label": "Dec 2003",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 2749.89,
+    "profit": 1534.93
+  },
+  {
+    "month_key": "2003-12",
+    "label": "Dec 2003",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 3179.35,
+    "profit": 29.7
+  },
+  {
+    "month_key": "2003-12",
+    "label": "Dec 2003",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 196910.14,
+    "profit": 52932.29
+  },
+  {
+    "month_key": "2003-12",
+    "label": "Dec 2003",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 53329.41,
+    "profit": 4531.17
+  },
+  {
+    "month_key": "2003-12",
+    "label": "Dec 2003",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 5013.13,
+    "profit": 3138.2
+  },
+  {
+    "month_key": "2004-01",
+    "label": "Jan 2004",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 2154.68,
+    "profit": 1253.26
+  },
+  {
+    "month_key": "2004-01",
+    "label": "Jan 2004",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 2249.48,
+    "profit": 179.72
+  },
+  {
+    "month_key": "2004-01",
+    "label": "Jan 2004",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 142409.64,
+    "profit": 42251.13
+  },
+  {
+    "month_key": "2004-01",
+    "label": "Jan 2004",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 34235.37,
+    "profit": 2963.25
+  },
+  {
+    "month_key": "2004-01",
+    "label": "Jan 2004",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 5216.02,
+    "profit": 3265.2
+  },
+  {
+    "month_key": "2004-02",
+    "label": "Feb 2004",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 4634.24,
+    "profit": 2901.01
+  },
+  {
+    "month_key": "2004-02",
+    "label": "Feb 2004",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 44711.17,
+    "profit": 4847.82
+  },
+  {
+    "month_key": "2004-02",
+    "label": "Feb 2004",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 2236.62,
+    "profit": 1309.07
+  },
+  {
+    "month_key": "2004-02",
+    "label": "Feb 2004",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 2479.44,
+    "profit": 243.54
+  },
+  {
+    "month_key": "2004-02",
+    "label": "Feb 2004",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 164780.28,
+    "profit": 43338.1
+  },
+  {
+    "month_key": "2004-03",
+    "label": "Mar 2004",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 2272.45,
+    "profit": 1341.16
+  },
+  {
+    "month_key": "2004-03",
+    "label": "Mar 2004",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 2583.84,
+    "profit": 167.95
+  },
+  {
+    "month_key": "2004-03",
+    "label": "Mar 2004",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 156977.32,
+    "profit": 41795.04
+  },
+  {
+    "month_key": "2004-03",
+    "label": "Mar 2004",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 51787.63,
+    "profit": 4707.64
+  },
+  {
+    "month_key": "2004-03",
+    "label": "Mar 2004",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 5031.13,
+    "profit": 3149.46
+  },
+  {
+    "month_key": "2004-04",
+    "label": "Apr 2004",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 2487.44,
+    "profit": 1419.92
+  },
+  {
+    "month_key": "2004-04",
+    "label": "Apr 2004",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 2797.24,
+    "profit": 28.32
+  },
+  {
+    "month_key": "2004-04",
+    "label": "Apr 2004",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 148037.87,
+    "profit": 40367.48
+  },
+  {
+    "month_key": "2004-04",
+    "label": "Apr 2004",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 51197.75,
+    "profit": 5148.7
+  },
+  {
+    "month_key": "2004-04",
+    "label": "Apr 2004",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 5269.6,
+    "profit": 3298.74
+  },
+  {
+    "month_key": "2004-05",
+    "label": "May 2004",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 5244.97,
+    "profit": 3283.33
+  },
+  {
+    "month_key": "2004-05",
+    "label": "May 2004",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 57778.93,
+    "profit": 5887.84
+  },
+  {
+    "month_key": "2004-05",
+    "label": "May 2004",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 2779.06,
+    "profit": 1537.98
+  },
+  {
+    "month_key": "2004-05",
+    "label": "May 2004",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 3157.58,
+    "profit": 1.01
+  },
+  {
+    "month_key": "2004-05",
+    "label": "May 2004",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 205631.1,
+    "profit": 60401.27
+  },
+  {
+    "month_key": "2004-06",
+    "label": "Jun 2004",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 2711.68,
+    "profit": 1526.58
+  },
+  {
+    "month_key": "2004-06",
+    "label": "Jun 2004",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 3276.23,
+    "profit": 133.5
+  },
+  {
+    "month_key": "2004-06",
+    "label": "Jun 2004",
+    "subcategory": "Mountain Bikes",
+    "category": "Bikes",
+    "sales": 193238.16,
+    "profit": 54268.23
+  },
+  {
+    "month_key": "2004-06",
+    "label": "Jun 2004",
+    "subcategory": "Road Bikes",
+    "category": "Bikes",
+    "sales": 47089.83,
+    "profit": 3446.33
+  },
+  {
+    "month_key": "2004-06",
+    "label": "Jun 2004",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 4774.26,
+    "profit": 2988.66
+  },
+  {
+    "month_key": "2004-07",
+    "label": "Jul 2004",
+    "subcategory": "Caps",
+    "category": "Clothing",
+    "sales": 854.05,
+    "profit": 196.43
+  },
+  {
+    "month_key": "2004-07",
+    "label": "Jul 2004",
+    "subcategory": "Bottles and Cages",
+    "category": "Accessories",
+    "sales": 838.32,
+    "profit": 524.78
+  },
+  {
+    "month_key": "2004-07",
+    "label": "Jul 2004",
+    "subcategory": "Tires and Tubes",
+    "category": "Accessories",
+    "sales": 3786.02,
+    "profit": 2370.03
+  }
+]

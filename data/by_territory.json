@@ -1,0 +1,92 @@
+[
+  {
+    "territory": "Southwest",
+    "sales": 1323672.99,
+    "profit": 287758.53,
+    "margin": 21.74,
+    "qty": 5451,
+    "orders": 3037,
+    "customers": 2624
+  },
+  {
+    "territory": "Northwest",
+    "sales": 984165.97,
+    "profit": 214422.02,
+    "margin": 21.79,
+    "qty": 3750,
+    "orders": 2299,
+    "customers": 2063
+  },
+  {
+    "territory": "Canada",
+    "sales": 822374.29,
+    "profit": 101222.81,
+    "margin": 12.31,
+    "qty": 4675,
+    "orders": 2251,
+    "customers": 1083
+  },
+  {
+    "territory": "Australia",
+    "sales": 799260.59,
+    "profit": 333003.84,
+    "margin": 41.66,
+    "qty": 3281,
+    "orders": 2652,
+    "customers": 2229
+  },
+  {
+    "territory": "United Kingdom",
+    "sales": 411812.06,
+    "profit": 120557.19,
+    "margin": 29.27,
+    "qty": 2607,
+    "orders": 1704,
+    "customers": 1358
+  },
+  {
+    "territory": "Central",
+    "sales": 335724.77,
+    "profit": 16108.41,
+    "margin": 4.8,
+    "qty": 1112,
+    "orders": 177,
+    "customers": 40
+  },
+  {
+    "territory": "France",
+    "sales": 334863.87,
+    "profit": 98404.79,
+    "margin": 29.39,
+    "qty": 2265,
+    "orders": 1365,
+    "customers": 1186
+  },
+  {
+    "territory": "Northeast",
+    "sales": 308024.56,
+    "profit": 9347.87,
+    "margin": 3.03,
+    "qty": 1074,
+    "orders": 177,
+    "customers": 41
+  },
+  {
+    "territory": "Germany",
+    "sales": 301755.5,
+    "profit": 120471.11,
+    "margin": 39.92,
+    "qty": 2086,
+    "orders": 1326,
+    "customers": 1200
+  },
+  {
+    "territory": "Southeast",
+    "sales": 254215.37,
+    "profit": 7875.59,
+    "margin": 3.1,
+    "qty": 973,
+    "orders": 185,
+    "customers": 51
+  }
+]
