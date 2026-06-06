@@ -1,0 +1,957 @@
+/* =============================================================================
+   style.css — Sales Analytics Dashboard
+   Tema: Dark mode + gradient warna dari Image 1
+   Font: Syne Bold (judul) + Poppins (body)
+============================================================================= */
+
+
+/* =============================================================================
+   BAGIAN 1: CSS VARIABLES (PALET WARNA)
+   Semua warna didefinisikan di sini sebagai variabel.
+   Untuk ganti tema, cukup ubah nilai di sini — tidak perlu cari satu per satu.
+============================================================================= */
+:root {
+  /* Background utama — hitam kebiruan sangat gelap */
+  --bg-main:        #08081a;
+  /* Background card/panel — sedikit lebih terang dari bg-main */
+  --bg-card:        rgba(255, 255, 255, 0.04);
+  /* Background card saat hover */
+  --bg-card-hover:  rgba(255, 255, 255, 0.07);
+  /* Border tipis untuk card */
+  --border-card:    rgba(255, 255, 255, 0.08);
+  --border-hover:   rgba(255, 255, 255, 0.15);
+
+  /* ── Gradient KPI Cards — 135deg diagonal (Image 1 style) ──
+     4 keluarga warna BERBEDA, tidak ada yang berulang.
+     Arah: terang kiri-atas → gelap kanan-bawah.
+     Dark overlay pada .kpi-card::after menjamin teks putih
+     di bagian bawah card selalu terbaca. */
+
+  /* Card 1 Total Sales   : kuning krem → biru dalam   (family biru-kuning) */
+  --grad-sales:   linear-gradient(135deg, #FFF7AA 0%, #004A9C 100%);
+  /* Card 2 Total Profit  : cyan terang → ungu dalam   (family teal-ungu) */
+  --grad-profit:  linear-gradient(135deg, #A8FFF8 0%, #3A0A7A 100%);
+  /* Card 3 Profit Margin : peach terang → ungu-hitam  (family oranye-gelap) */
+  --grad-margin:  linear-gradient(135deg, #FFB890 0%, #180830 100%);
+  /* Card 4 Total Qty     : hijau lime → hijau tua     (family hijau) */
+  --grad-qty:     linear-gradient(135deg, #D4FF88 0%, #1A3A08 100%);
+
+  /* ── Gradient Aksen Lain ── */
+  /* Untuk header/brand dan tombol utama: teal ke purple */
+  --grad-primary: linear-gradient(135deg, #02C3BD 0%, #4E148C 100%);
+  /* Untuk AI panel border */
+  --grad-ai:      linear-gradient(135deg, #4E148C 0%, #007CBE 100%);
+  /* Untuk zone-tag label */
+  --grad-tag:     linear-gradient(90deg, #02C3BD, #4E148C);
+
+  /* ── Warna Semantis ── */
+  /* Profit positif / data bagus → teal */
+  --color-positive: #02C3BD;
+  /* Profit negatif / anomali / alert → orange dari Image 1 */
+  --color-negative: #E57A44;
+  /* Warna netral untuk chart bar biasa */
+  --color-neutral:  #007CBE;
+
+  /* ── Warna Teks ── */
+  --text-primary:   #f0f0ff;   /* putih kebiruan untuk teks utama */
+  --text-secondary: #a0a0c0;   /* abu-abu kebiruan untuk label */
+  --text-muted:     #606080;   /* sangat redup untuk teks minor */
+
+  /* ── Sizing ── */
+  --radius-card:  16px;   /* sudut melengkung untuk semua card */
+  --radius-btn:   10px;   /* sudut melengkung untuk tombol */
+  --radius-badge: 6px;    /* sudut melengkung untuk badge kecil */
+
+  /* ── Spacing ── */
+  --gap-zone:   40px;   /* jarak antar zona */
+  --gap-card:   20px;   /* jarak antar card */
+  --pad-card:   24px;   /* padding dalam card */
+  --pad-zone:   32px;   /* padding dalam zona */
+
+  /* ── Transisi ── */
+  --transition: 0.25s ease;
+}
+
+
+/* =============================================================================
+   BAGIAN 2: RESET & BASE
+   Menghapus styling default browser dan set styling dasar
+============================================================================= */
+*, *::before, *::after {
+  box-sizing: border-box;   /* ukuran elemen termasuk padding dan border */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;  /* animasi scroll halus */
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  /* Syne untuk judul, Poppins untuk body, sans-serif sebagai fallback */
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+  /* Efek noise halus di background untuk tekstur */
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(2,195,189,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(78,20,140,0.06) 0%, transparent 50%);
+}
+
+
+/* =============================================================================
+   BAGIAN 3: TIPOGRAFI
+   Aturan penggunaan font Syne dan Poppins
+============================================================================= */
+
+/* Semua heading (h1-h4) menggunakan Syne Bold */
+h1, h2, h3, h4 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* H1 untuk judul naratif AI — paling besar */
+h1 { font-size: 2rem; }
+
+/* H2 untuk judul section */
+h2 { font-size: 1.5rem; }
+
+/* H3 untuk judul chart dan panel */
+h3 { font-size: 1.1rem; }
+
+/* Angka KPI dan teks dengan Syne */
+.kpi-value, .brand-text, .zone-tag, .chart-badge {
+  font-family: 'Syne', sans-serif;
+}
+
+
+/* =============================================================================
+   BAGIAN 4: NAVBAR
+   Bar navigasi paling atas berisi brand + tombol tab
+============================================================================= */
+.navbar {
+  position: sticky;           /* navbar tetap di atas saat scroll */
+  top: 0;
+  z-index: 100;               /* tampil di atas semua elemen lain */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 60px;
+  /* Background semi-transparan dengan blur — efek frosted glass */
+  background: rgba(8, 8, 26, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-card);
+}
+
+/* Nama brand di kiri navbar */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Ikon dekoratif brand - warna solid teal */
+.brand-icon {
+  font-size: 1.4rem;
+  color: #02C3BD;
+}
+
+/* Teks nama brand - warna solid agar terbaca jelas */
+.brand-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #02C3BD;
+}
+
+/* Container tombol tab */
+.tab-buttons {
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.05);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--border-card);
+}
+
+/* Tombol tab (AI Dashboard | Tableau) */
+.tab-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  color: var(--text-secondary);
+  background: transparent;
+  letter-spacing: 0.3px;
+}
+
+/* Tombol tab saat di-hover */
+.tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.08);
+}
+
+/* Tombol tab yang sedang aktif */
+.tab-btn.active {
+  background: var(--grad-primary);
+  color: white;
+}
+
+
+/* =============================================================================
+   BAGIAN 5: FILTER BAR
+   Bar filter di bawah navbar, berisi dropdown interaktif
+============================================================================= */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 32px;
+  background: rgba(8, 8, 26, 0.7);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-card);
+  flex-wrap: wrap;   /* agar tidak overflow di layar kecil */
+}
+
+/* Group satu filter (label + dropdown) */
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Label filter (Tahun, Category, dll) */
+.filter-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+}
+
+/* Dropdown select filter */
+.filter-select {
+  background: rgba(255,255,255,0.06);
+  color: var(--text-primary);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color var(--transition);
+  outline: none;
+  /* Hapus styling default browser untuk select */
+  appearance: none;
+  -webkit-appearance: none;
+  /* Tambah panah custom di kanan */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23a0a0c0'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+
+/* Dropdown saat di-hover atau fokus */
+.filter-select:hover,
+.filter-select:focus {
+  border-color: var(--color-positive);
+}
+
+/* Opsi dalam dropdown — styling untuk Windows */
+.filter-select option {
+  background: #1a1a3e;
+  color: var(--text-primary);
+}
+
+/* Tombol Reset Filter */
+.filter-reset {
+  margin-left: auto;   /* dorong ke kanan */
+  padding: 6px 16px;
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-reset:hover {
+  border-color: var(--color-negative);
+  color: var(--color-negative);
+}
+
+
+/* =============================================================================
+   BAGIAN 6: TAB CONTENT
+   Sistem show/hide untuk tab dashboard dan tableau
+============================================================================= */
+
+/* Semua tab tersembunyi secara default */
+.tab-content {
+  display: none;
+}
+
+/* Hanya tab yang punya class 'active' yang ditampilkan */
+.tab-content.active {
+  display: block;
+  /* Animasi fade-in saat tab muncul */
+  animation: fadeIn 0.3s ease;
+}
+
+/* Animasi fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* =============================================================================
+   BAGIAN 7: MAIN CONTENT & ZONA
+   Layout utama berisi tiga zona SCR
+============================================================================= */
+
+/* Container utama */
+.main-content {
+  max-width: 1400px;      /* lebar maksimal konten */
+  margin: 0 auto;         /* tengahkan di layar */
+  padding: 32px;
+}
+
+/* Setiap zona (Setup, Conflict, Resolution) */
+.zone {
+  margin-bottom: var(--gap-zone);
+  padding: var(--pad-zone);
+  border-radius: 20px;
+  border: 1px solid var(--border-card);
+  background: rgba(255,255,255,0.02);
+  position: relative;     /* untuk positioning zone-tag */
+}
+
+/* Label penanda zona (SETUP / CONFLICT / RESOLUTION)
+   Menggunakan solid pill — lebih kompatibel dan terbaca jelas
+   di semua browser termasuk Chrome/Edge di Windows */
+.zone-tag {
+  display: inline-block;
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  /* Background semi-transparan teal + teks teal solid */
+  background: rgba(2, 195, 189, 0.12);
+  color: #02C3BD;
+  border: 1px solid rgba(2, 195, 189, 0.35);
+}
+
+
+/* =============================================================================
+   BAGIAN 8: ZONA 1 — SETUP
+   Judul naratif AI + 4 KPI Cards
+============================================================================= */
+
+/* Judul naratif yang digenerate oleh AI
+   Warna solid putih kebiruan agar terbaca jelas di semua browser */
+.narrative-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #e8f4ff;
+  line-height: 1.3;
+}
+
+/* Sub-judul deskriptif */
+.narrative-sub {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 28px;
+  max-width: 700px;
+}
+
+/* Grid 4 kolom untuk KPI cards */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);   /* 4 kolom sama rata */
+  gap: var(--gap-card);
+}
+
+/* Base styling untuk semua KPI card */
+.kpi-card {
+  position: relative;
+  padding: var(--pad-card);
+  border-radius: var(--radius-card);
+  overflow: hidden;         /* gradient tidak keluar dari card */
+  cursor: default;
+  transition: transform var(--transition), box-shadow var(--transition);
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;  /* konten di bawah card */
+}
+
+/* Dark overlay di bagian bawah setiap KPI card
+   Teknik: pseudo-element dengan gradient gelap dari bawah ke atas
+   Fungsi: memastikan teks putih di bagian bawah SELALU terbaca
+   apapun warna gradient latar belakang kartu */
+.kpi-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;   /* cover 70% bagian bawah card */
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,          /* atas overlay: transparan */
+    rgba(0, 0, 0, 0.50) 100% /* bawah overlay: gelap 50% */
+  );
+  border-radius: 0 0 var(--radius-card) var(--radius-card);
+  pointer-events: none;  /* overlay tidak menghalangi interaksi */
+  z-index: 0;            /* di bawah konten */
+}
+
+/* Efek hover card naik sedikit */
+.kpi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+
+/* ── Gradient per card ── */
+.kpi-sales  { background: var(--grad-sales);  }
+.kpi-profit { background: var(--grad-profit); }
+.kpi-margin { background: var(--grad-margin); }
+.kpi-qty    { background: var(--grad-qty);    }
+
+/* Ikon dekoratif di pojok kanan atas card
+   Berada di bagian ATAS card yang berwarna terang (kiri-atas gradient)
+   Warna gelap agar kontras dengan latar terang
+   z-index: 1 agar tampil di atas overlay */
+.kpi-icon {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 2rem;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.3);   /* gelap semi-transparan di atas area terang */
+  z-index: 1;
+}
+
+/* Label nama KPI (TOTAL SALES, dll)
+   z-index: 1 agar tampil di atas overlay gelap */
+.kpi-label {
+  position: relative;
+  z-index: 1;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 6px;
+}
+
+/* Nilai angka KPI — paling besar dan paling menonjol
+   z-index: 1 agar tampil di atas overlay gelap */
+.kpi-value {
+  position: relative;
+  z-index: 1;
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1;
+  margin-bottom: 4px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+/* Sub-teks kecil di bawah nilai (contoh: "2001 - 2004", "— orders")
+   z-index: 1 agar tampil di atas overlay gelap */
+.kpi-sub {
+  position: relative;
+  z-index: 1;
+  font-size: 11px;
+  color: rgba(255,255,255,0.65);
+}
+
+
+/* =============================================================================
+   BAGIAN 9: ZONA 2 — CONFLICT
+   Layout 2 kolom: chart (kiri lebih lebar) + anomaly panel (kanan)
+============================================================================= */
+
+/* Grid 2 kolom — chart 2fr, anomaly 1fr */
+.conflict-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--gap-card);
+}
+
+/* Kolom chart berisi 2 chart bertumpuk */
+.conflict-charts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-card);
+}
+
+
+/* =============================================================================
+   BAGIAN 10: CHART CARD
+   Styling umum untuk semua card yang berisi chart
+============================================================================= */
+
+/* Base card untuk semua chart */
+.chart-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-card);
+  padding: var(--pad-card);
+  transition: border-color var(--transition);
+}
+
+.chart-card:hover {
+  border-color: var(--border-hover);
+}
+
+/* Header card: judul + badge jenis chart */
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+/* Judul chart */
+.chart-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Badge kecil yang menampilkan jenis chart (Bar Chart, Line Chart, dll) */
+.chart-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-badge);
+  background: rgba(2,195,189,0.1);
+  color: var(--color-positive);
+  border: 1px solid rgba(2,195,189,0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Area kosong tempat D3.js merender chart */
+.chart-area {
+  width: 100%;
+  min-height: 250px;   /* tinggi minimal chart */
+  position: relative;
+}
+
+/* Versi lebih tinggi untuk chart tren (line chart) */
+.chart-area-tall {
+  min-height: 300px;
+}
+
+/* Loading text saat data belum selesai dimuat */
+.loading-text {
+  color: var(--text-muted);
+  font-size: 13px;
+  text-align: center;
+  padding: 40px 0;
+}
+
+
+/* =============================================================================
+   BAGIAN 11: ANOMALY PANEL
+   Panel di kanan Zona Conflict untuk tampilkan anomali
+============================================================================= */
+
+.anomaly-panel {
+  background: var(--bg-card);
+  border: 1px solid rgba(229, 122, 68, 0.2);   /* border oranye tipis */
+  border-radius: var(--radius-card);
+  padding: var(--pad-card);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* Tinggi maksimal dengan scroll jika anomali banyak */
+  max-height: 520px;
+}
+
+/* Header panel (ikon + judul) */
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Ikon dekoratif di header panel */
+.panel-icon {
+  font-size: 1.2rem;
+}
+
+/* Judul panel */
+.panel-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Deskripsi singkat di bawah judul panel */
+.panel-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Daftar item anomali — scrollable */
+.anomaly-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* Scrollbar custom agar senada tema gelap */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(229,122,68,0.3) transparent;
+}
+
+/* Satu item anomali */
+.anomaly-item {
+  padding: 12px;
+  background: rgba(229,122,68,0.08);
+  border: 1px solid rgba(229,122,68,0.2);
+  border-radius: 10px;
+  border-left: 3px solid var(--color-negative);
+}
+
+/* Baris pertama anomali: nama produk/kategori */
+.anomaly-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-negative);
+  margin-bottom: 4px;
+}
+
+/* Nilai anomali (contoh: Z-score atau perubahan %) */
+.anomaly-value {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Narasi penjelasan anomali dari AI */
+.anomaly-narasi {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+
+/* =============================================================================
+   BAGIAN 12: ZONA 3 — RESOLUTION
+   Layout 2 baris:
+   Baris 1: Line chart (lebih lebar) + AI Panel
+   Baris 2: Scatter plot + Top 10 bar chart
+============================================================================= */
+
+/* Setiap baris dalam zona resolution */
+.resolution-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;   /* kiri lebih lebar dari kanan */
+  gap: var(--gap-card);
+  margin-bottom: var(--gap-card);
+}
+
+/* Baris terakhir tidak perlu margin bawah */
+.resolution-row:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =============================================================================
+   BAGIAN 13: AI INSIGHT PANEL
+   Panel interaktif untuk tanya-jawab dengan Groq AI
+============================================================================= */
+
+.ai-panel {
+  background: var(--bg-card);
+  /* Border gradient purple ke biru menggunakan teknik pseudo-element */
+  border: 1px solid rgba(78, 20, 140, 0.4);
+  border-radius: var(--radius-card);
+  padding: var(--pad-card);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* Glow efek subtle dari dalam */
+  box-shadow: inset 0 0 30px rgba(78,20,140,0.05);
+}
+
+/* Area teks respons dari AI */
+.ai-response {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  min-height: 120px;
+  /* Scrollable jika respons panjang */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(78,20,140,0.3) transparent;
+}
+
+/* Teks respons AI yang sudah ada */
+.ai-response p {
+  margin-bottom: 8px;
+}
+
+/* Indikator loading (titik-titik animasi) saat menunggu respons */
+.ai-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Animasi tiga titik loading */
+.loading-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.loading-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-positive);
+  animation: dotPulse 1.4s ease-in-out infinite;
+}
+
+/* Setiap titik animasi dengan delay berbeda */
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotPulse {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+  40%           { opacity: 1;   transform: scale(1); }
+}
+
+/* Container tombol AI */
+.ai-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Tombol utama: Minta Insight Menyeluruh */
+.btn-insight-main {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: var(--radius-btn);
+  background: var(--grad-ai);
+  color: white;
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+  letter-spacing: 0.3px;
+}
+
+.btn-insight-main:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(78,20,140,0.3);
+}
+
+/* Tombol quick question */
+.btn-insight-quick {
+  width: 100%;
+  padding: 9px 14px;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-btn);
+  background: rgba(255,255,255,0.04);
+  color: var(--text-secondary);
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition);
+}
+
+.btn-insight-quick:hover {
+  border-color: rgba(2,195,189,0.4);
+  color: var(--color-positive);
+  background: rgba(2,195,189,0.06);
+}
+
+/* Tombol saat sedang loading (disabled) */
+.btn-insight-main:disabled,
+.btn-insight-quick:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* =============================================================================
+   BAGIAN 14: TAB TABLEAU
+   Halaman embed Tableau Public
+============================================================================= */
+
+/* Wrapper konten Tableau */
+.tableau-wrapper {
+  padding: var(--pad-zone);
+}
+
+/* Judul halaman Tableau */
+.tableau-title {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+/* Deskripsi singkat */
+.tableau-desc {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* Wrapper iframe Tableau */
+.tableau-frame-wrapper {
+  width: 100%;
+  min-height: 600px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid var(--border-card);
+}
+
+/* Iframe Tableau */
+.tableau-frame-wrapper iframe {
+  width: 100%;
+  height: 700px;
+  border: none;
+}
+
+/* Placeholder saat URL Tableau belum diisi */
+.tableau-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+.placeholder-note {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+
+/* =============================================================================
+   BAGIAN 15: SCROLLBAR GLOBAL
+   Custom scrollbar agar senada dengan tema gelap
+============================================================================= */
+
+/* Untuk browser berbasis Webkit (Chrome, Edge) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+
+/* =============================================================================
+   BAGIAN 16: RESPONSIVE
+   Penyesuaian layout untuk layar lebih kecil (laptop standar)
+============================================================================= */
+
+@media (max-width: 1200px) {
+  /* KPI grid jadi 2 kolom di layar medium */
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Conflict grid jadi 1 kolom */
+  .conflict-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Resolution row jadi 1 kolom */
+  .resolution-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Main content padding lebih kecil di mobile */
+  .main-content {
+    padding: 16px;
+  }
+
+  /* Navbar padding lebih kecil */
+  .navbar {
+    padding: 0 16px;
+  }
+
+  /* KPI grid jadi 1 kolom */
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Judul naratif lebih kecil */
+  .narrative-title {
+    font-size: 1.4rem;
+  }
+
+  /* Filter bar scroll horizontal */
+  .filter-bar {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 10px 16px;
+  }
+}

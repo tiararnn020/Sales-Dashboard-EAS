@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Viewport agar tampil baik di semua ukuran layar -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales Analytics Dashboard</title>
+
+  <!-- ============================================================
+       FONT: Syne (judul) + Poppins (body) dari Google Fonts
+       Syne Bold 700 = untuk semua heading dan angka KPI
+       Poppins 300, 400, 600 = untuk teks body dan label
+  ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- File CSS utama -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGASI / TAB BAR
+       Berisi nama brand dan 2 tombol tab:
+       1. AI Dashboard (halaman utama dengan chart + AI insight)
+       2. Tableau     (embed dashboard Tableau Public)
+  ============================================================ -->
+  <nav class="navbar">
+    <!-- Nama brand di kiri -->
+    <div class="brand">
+      <span class="brand-text">Sales Analytics</span>
+    </div>
+
+    <!-- Tombol tab di kanan -->
+    <div class="tab-buttons">
+      <!-- Tab aktif saat halaman pertama dibuka -->
+      <button class="tab-btn active" data-tab="dashboard">
+        AI Dashboard
+      </button>
+      <button class="tab-btn" data-tab="tableau">
+        Tableau
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       FILTER BAR
+       Bar berisi semua dropdown filter interaktif.
+       Isi dropdown akan diload otomatis oleh filters.js
+       menggunakan data dari data/filters.json
+  ============================================================ -->
+  <div class="filter-bar" id="filter-bar">
+    <!-- Filter: Tahun -->
+    <div class="filter-group">
+      <label class="filter-label">Tahun</label>
+      <select class="filter-select" id="filter-year">
+        <option value="all">Semua Tahun</option>
+        <!-- Diisi otomatis oleh filters.js -->
+      </select>
+    </div>
+
+    <!-- Filter: Category -->
+    <div class="filter-group">
+      <label class="filter-label">Category</label>
+      <select class="filter-select" id="filter-category">
+        <option value="all">Semua Kategori</option>
+        <!-- Diisi otomatis oleh filters.js -->
+      </select>
+    </div>
+
+    <!-- Filter: Territory -->
+    <div class="filter-group">
+      <label class="filter-label">Territory</label>
+      <select class="filter-select" id="filter-territory">
+        <option value="all">Semua Territory</option>
+        <!-- Diisi otomatis oleh filters.js -->
+      </select>
+    </div>
+
+    <!-- Filter: Segment -->
+    <div class="filter-group">
+      <label class="filter-label">Segment</label>
+      <select class="filter-select" id="filter-segment">
+        <option value="all">Semua Segmen</option>
+        <!-- Diisi otomatis oleh filters.js -->
+      </select>
+    </div>
+
+    <!-- Tombol reset semua filter -->
+    <button class="filter-reset" id="btn-reset-filter">
+      ↺ Reset Filter
+    </button>
+  </div>
+
+  <!-- ============================================================
+       KONTEN UTAMA
+       Berisi dua tab: dashboard dan tableau
+       Hanya satu yang ditampilkan sesuai tab yang diklik
+  ============================================================ -->
+  <main class="main-content">
+
+    <!-- ══════════════════════════════════════════════════
+         TAB 1: AI DASHBOARD
+         Terdiri dari 3 zona sesuai kerangka SCR:
+         Zona 1 Setup → Zona 2 Conflict → Zona 3 Resolution
+    ══════════════════════════════════════════════════ -->
+    <div id="tab-dashboard" class="tab-content active">
+
+      <!-- ────────────────────────────────────────────
+           ZONA 1 — SETUP
+           Berisi: label zona + judul naratif AI + 4 KPI cards
+      ──────────────────────────────────────────── -->
+      <section class="zone zone-setup">
+
+        <!-- Label penanda zona (Setup / Conflict / Resolution) -->
+        <div class="zone-tag">SETUP</div>
+
+        <!-- Judul naratif otomatis dari AI (storyEngine.js)
+             Saat pertama load, tampilkan teks placeholder dulu
+             → akan diganti otomatis saat AI selesai diimplementasi -->
+        <h1 class="narrative-title" id="narrative-title">
+          Data Penjualan 2001–2004: Menemukan Pola di Balik Angka
+        </h1>
+
+        <!-- Sub-judul deskriptif ringkas -->
+        <p class="narrative-sub" id="narrative-sub">
+          Dashboard ini menyajikan analisis komprehensif data penjualan
+          2001–2004 mencakup kategori produk, wilayah, dan tren waktu.
+        </p>
+
+        <!-- Grid 4 KPI Cards
+             Setiap card punya gradient warna berbeda dari Image 1
+             Nilai angka diisi otomatis oleh app.js dari kpi.json -->
+        <div class="kpi-grid">
+
+          <!-- KPI 1: Total Sales — gradient biru ke kuning -->
+          <div class="kpi-card kpi-sales">
+            <div class="kpi-icon">$</div>
+            <div class="kpi-label">Total Sales</div>
+            <div class="kpi-value" id="kpi-sales">—</div>
+            <div class="kpi-sub" id="kpi-period">2001 – 2004</div>
+          </div>
+
+          <!-- KPI 2: Total Profit — gradient teal ke purple -->
+          <div class="kpi-card kpi-profit">
+            <div class="kpi-icon">↑</div>
+            <div class="kpi-label">Total Profit</div>
+            <div class="kpi-value" id="kpi-profit">—</div>
+            <div class="kpi-sub">Net profit after cost</div>
+          </div>
+
+          <!-- KPI 3: Profit Margin — gradient orange ke dark purple -->
+          <div class="kpi-card kpi-margin">
+            <div class="kpi-icon">%</div>
+            <div class="kpi-label">Profit Margin</div>
+            <div class="kpi-value" id="kpi-margin">—</div>
+            <div class="kpi-sub">Overall margin rate</div>
+          </div>
+
+          <!-- KPI 4: Total Qty — gradient green ke yellow -->
+          <div class="kpi-card kpi-qty">
+            <div class="kpi-icon">◻</div>
+            <div class="kpi-label">Total Qty Sold</div>
+            <div class="kpi-value" id="kpi-qty">—</div>
+            <div class="kpi-sub" id="kpi-orders">— orders</div>
+          </div>
+
+        </div>
+        <!-- /kpi-grid -->
+
+      </section>
+      <!-- /zone-setup -->
+
+
+      <!-- ────────────────────────────────────────────
+           ZONA 2 — CONFLICT
+           Berisi: 2 chart utama + panel deteksi anomali
+           Layout: 2 kolom (chart kiri | anomali kanan)
+      ──────────────────────────────────────────── -->
+      <section class="zone zone-conflict">
+
+        <div class="zone-tag">CONFLICT</div>
+
+        <div class="conflict-grid">
+
+          <!-- Kolom Kiri: Chart-chart utama -->
+          <div class="conflict-charts">
+
+            <!-- Chart 1: Bar chart Sales & Profit per Kategori
+                 Container kosong — diisi oleh charts.js -->
+            <div class="chart-card">
+              <div class="chart-header">
+                <h3 class="chart-title" id="title-category">
+                  Sales &amp; Profit per Kategori
+                </h3>
+                <span class="chart-badge">Bar Chart</span>
+              </div>
+              <div class="chart-area" id="chart-category">
+                <!-- D3.js akan render SVG di sini -->
+              </div>
+            </div>
+
+            <!-- Chart 2: Bar chart Profitabilitas per Territory
+                 Warna merah untuk territory dengan profit rendah/negatif -->
+            <div class="chart-card">
+              <div class="chart-header">
+                <h3 class="chart-title" id="title-territory">
+                  Profitabilitas per Territory
+                </h3>
+                <span class="chart-badge">Bar Chart</span>
+              </div>
+              <div class="chart-area" id="chart-territory">
+                <!-- D3.js akan render SVG di sini -->
+              </div>
+            </div>
+
+          </div>
+          <!-- /conflict-charts -->
+
+          <!-- Kolom Kanan: Panel Deteksi Anomali
+               anomaly.js akan mengisi daftar anomali di sini
+               menggunakan Z-score dan IQR dari anomaly_data.json -->
+          <div class="anomaly-panel">
+            <div class="panel-header">
+              <span class="panel-icon">⚠</span>
+              <h3 class="panel-title">Deteksi Anomali</h3>
+            </div>
+            <p class="panel-desc">
+              Pola tidak normal yang terdeteksi secara otomatis
+              menggunakan metode Z-score dan IQR.
+            </p>
+            <!-- Daftar anomali — diisi oleh anomaly.js -->
+            <div class="anomaly-list" id="anomaly-list">
+              <div class="loading-text">Menganalisis anomali...</div>
+            </div>
+          </div>
+          <!-- /anomaly-panel -->
+
+        </div>
+        <!-- /conflict-grid -->
+
+      </section>
+      <!-- /zone-conflict -->
+
+
+      <!-- ────────────────────────────────────────────
+           ZONA 3 — RESOLUTION
+           Berisi: Tren bulanan, Scatter plot, Top 10, AI Panel
+           Layout: grid 2 kolom, baris 1 dan baris 2
+      ──────────────────────────────────────────── -->
+      <section class="zone zone-resolution">
+
+        <div class="zone-tag">RESOLUTION</div>
+
+        <!-- Baris 1: Line Chart Tren + AI Insight Panel -->
+        <div class="resolution-row">
+
+          <!-- Line Chart: Tren Sales & Profit Bulanan 2001–2004 -->
+          <div class="chart-card chart-wide">
+            <div class="chart-header">
+              <h3 class="chart-title" id="title-trend">
+                Tren Sales &amp; Profit Bulanan
+              </h3>
+              <span class="chart-badge">Line Chart</span>
+            </div>
+            <div class="chart-area chart-area-tall" id="chart-trend">
+              <!-- D3.js akan render SVG di sini -->
+            </div>
+          </div>
+
+          <!-- AI Insight Panel
+               aiInsight.js akan kirim data ke Groq API
+               dan tampilkan respons narasi di sini -->
+          <div class="ai-panel">
+            <div class="panel-header">
+              <span class="panel-icon">✦</span>
+              <h3 class="panel-title">AI Insight</h3>
+            </div>
+
+            <!-- Area teks respons dari AI -->
+            <div class="ai-response" id="ai-response">
+              Klik salah satu tombol di bawah untuk mendapatkan
+              analisis mendalam dari AI berdasarkan data penjualan.
+            </div>
+
+            <!-- Loading indicator saat menunggu respons AI -->
+            <div class="ai-loading" id="ai-loading" style="display:none;">
+              <div class="loading-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span>AI sedang menganalisis...</span>
+            </div>
+
+            <!-- Tombol-tombol pertanyaan ke AI -->
+            <div class="ai-buttons">
+              <!-- Tombol utama: minta insight menyeluruh -->
+              <button class="btn-insight-main" id="btn-insight">
+                ✦ Minta Insight Menyeluruh
+              </button>
+
+              <!-- Quick question buttons -->
+              <button class="btn-insight-quick"
+                      data-question="anomali">
+                ⚠ Anomali Utama?
+              </button>
+              <button class="btn-insight-quick"
+                      data-question="produk">
+                ◈ Rekomendasi Produk?
+              </button>
+              <button class="btn-insight-quick"
+                      data-question="wilayah">
+                ◉ Wilayah Terbaik?
+              </button>
+            </div>
+          </div>
+          <!-- /ai-panel -->
+
+        </div>
+        <!-- /resolution-row baris 1 -->
+
+        <!-- Baris 2: Scatter Plot + Top 10 Products -->
+        <div class="resolution-row">
+
+          <!-- Scatter Plot: Sales vs Profit per Produk
+               Setiap titik = satu produk (9 produk) -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title" id="title-scatter">
+                Hubungan Sales vs Profit per Produk
+              </h3>
+              <span class="chart-badge">Scatter Plot</span>
+            </div>
+            <div class="chart-area" id="chart-scatter">
+              <!-- D3.js akan render SVG di sini -->
+            </div>
+          </div>
+
+          <!-- Top 10 Products by Profit
+               Horizontal bar chart, warna teal = positif, merah = negatif -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title" id="title-top10">
+                Produk Terbaik Berdasarkan Profit
+              </h3>
+              <span class="chart-badge">Bar Chart</span>
+            </div>
+            <div class="chart-area" id="chart-top10">
+              <!-- D3.js akan render SVG di sini -->
+            </div>
+          </div>
+
+        </div>
+        <!-- /resolution-row baris 2 -->
+
+      </section>
+      <!-- /zone-resolution -->
+
+    </div>
+    <!-- /tab-dashboard -->
+
+
+    <!-- ══════════════════════════════════════════════════
+         TAB 2: TABLEAU
+         Berisi embed iframe dari Tableau Public
+         URL dikonfigurasi di js/config.js
+    ══════════════════════════════════════════════════ -->
+    <div id="tab-tableau" class="tab-content">
+      <div class="tableau-wrapper">
+        <div class="zone-tag">TABLEAU PUBLIC</div>
+        <h2 class="tableau-title">Dashboard Tableau</h2>
+        <p class="tableau-desc">
+          Visualisasi interaktif data penjualan Sales 2001–2004
+          menggunakan Tableau Public.
+        </p>
+        <!-- Iframe embed Tableau — src diisi dari config.js -->
+        <div class="tableau-frame-wrapper" id="tableau-frame-wrapper">
+          <!-- Diisi oleh app.js setelah config.js diload -->
+          <div class="tableau-placeholder" id="tableau-placeholder">
+            <span class="placeholder-icon">◈</span>
+            <p>Tableau Dashboard akan tampil di sini.</p>
+            <p class="placeholder-note">
+              Pastikan TABLEAU_URL sudah diisi di js/config.js
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /tab-tableau -->
+
+  </main>
+  <!-- /main-content -->
+
+
+  <!-- ============================================================
+       SCRIPTS
+       Urutan penting — config.js harus pertama,
+       app.js harus terakhir karena menggunakan semua modul lain
+  ============================================================ -->
+  <!-- Library D3.js v7 dari CDN untuk semua visualisasi chart -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- config.js  : API key Groq + URL Tableau + pengaturan global -->
+  <script src="js/config.js"></script>
+
+  <!-- filters.js : isi dropdown filter dari filters.json -->
+  <script src="js/filters.js"></script>
+
+  <!-- anomaly.js : deteksi anomali Z-score + IQR -->
+  <script src="js/anomaly.js"></script>
+
+  <!-- charts.js  : semua fungsi pembuatan chart D3.js -->
+  <script src="js/charts.js"></script>
+
+  <!-- aiInsight.js : komunikasi dengan Groq API -->
+  <script src="js/aiInsight.js"></script>
+
+  <!-- storyEngine.js : generate judul naratif otomatis -->
+  <script src="js/storyEngine.js"></script>
+
+  <!-- app.js     : orkestrator — load data JSON + init semua modul -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>
