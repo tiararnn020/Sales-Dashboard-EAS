@@ -1,104 +1,126 @@
 // =============================================================================
 // js/config.js
-// File konfigurasi global untuk Sales Analytics Dashboard.
+// File konfigurasi global Sales Analytics Dashboard.
 //
-// PENTING: File ini berisi API key.
-// Jangan bagikan API key ke orang lain.
+// KEAMANAN API KEY:
+// API key TIDAK disimpan di file ini karena repo bersifat public.
+// API key disimpan di localStorage browser menggunakan fungsi
+// getGroqApiKey() dan setGroqApiKey() di bawah.
+//
+// Cara pakai:
+// - Pertama kali buka dashboard → klik tombol "⚙ API Key" di navbar
+// - Masukkan API key Groq → klik Simpan
+// - Key tersimpan di browser dan tidak perlu diinput lagi
 // =============================================================================
 
 
 // =============================================================================
-// BAGIAN 1: GROQ API CONFIGURATION
-// Isi GROQ_API_KEY dengan API key yang sudah kamu buat di console.groq.com
+// BAGIAN 1: KONFIGURASI GLOBAL
 // =============================================================================
 const CONFIG = {
 
-  // API key Groq — salin dari console.groq.com → API Keys
-  // Bentuk: "gsk_xxxxxxxxxxxxxxxxxxxx"
-  GROQ_API_KEY: "",   // ← ISI DI SINI dengan API key-mu
+  // API key Groq diambil dari localStorage (bukan hardcode di sini)
+  // Gunakan getGroqApiKey() untuk membaca nilainya
+  get GROQ_API_KEY() {
+    return localStorage.getItem("groq_api_key") || "";
+  },
 
-  // Model AI yang digunakan dari Groq
-  // llama-3.1-8b-instant = cepat dan gratis, cocok untuk insight dashboard
+  // Model AI Groq yang digunakan
   GROQ_MODEL: "llama-3.1-8b-instant",
 
-  // Maksimal token untuk respons AI
-  // 1024 token = cukup untuk 1-2 paragraf insight
+  // Maksimal token untuk respons AI (1024 = 1-2 paragraf)
   GROQ_MAX_TOKENS: 1024,
 
-  // URL dashboard Tableau Public
-  // Isi setelah kamu publish workbook ke Tableau Public
-  // Bentuk: "https://public.tableau.com/views/NamaWorkbook/NamaDashboard"
-  TABLEAU_URL: "",    // ← ISI DI SINI setelah buat dashboard Tableau
+  // URL Tableau Public — isi setelah publish workbook
+  // Bentuk: "https://public.tableau.com/views/NamaFile/NamaDashboard"
+  TABLEAU_URL: "",   // ← isi setelah buat Tableau dashboard
 
   // Path folder data JSON
-  // Tidak perlu diubah jika struktur folder sesuai panduan
   DATA_PATH: "data/",
 
 };
 
 
 // =============================================================================
-// BAGIAN 2: FORMAT ANGKA
-// Fungsi-fungsi helper untuk format angka agar tampil rapi di dashboard
+// BAGIAN 2: MANAJEMEN API KEY
+// Fungsi untuk menyimpan dan membaca API key dari localStorage browser.
+// localStorage = penyimpanan di browser, tidak ikut ke GitHub.
 // =============================================================================
 
 /**
- * Format angka besar menjadi format singkat dengan simbol mata uang
- * Contoh: 5875869.98 → "$5.88M"
- * Contoh: 309172.17  → "$309.2K"
- * Contoh: 455.20     → "$455.20"
+ * Menyimpan API key Groq ke localStorage browser.
+ * Setelah disimpan, key bisa dibaca dengan getGroqApiKey().
  *
- * @param {number} value - Angka yang akan diformat
- * @returns {string} Angka terformat
+ * @param {string} key - API key Groq (bentuk: "gsk_xxxx...")
  */
-function formatCurrency(value) {
-  if (value >= 1_000_000) {
-    // Jika lebih dari 1 juta, tampilkan dalam format "M" (misal: $5.88M)
-    return "$" + (value / 1_000_000).toFixed(2) + "M";
-  } else if (value >= 1_000) {
-    // Jika lebih dari 1000, tampilkan dalam format "K" (misal: $309.2K)
-    return "$" + (value / 1_000).toFixed(1) + "K";
-  } else {
-    // Jika di bawah 1000, tampilkan penuh dengan 2 desimal
-    return "$" + value.toFixed(2);
+function setGroqApiKey(key) {
+  if (key && key.trim() !== "") {
+    localStorage.setItem("groq_api_key", key.trim());
+    console.log("[config.js] API key berhasil disimpan di localStorage");
   }
 }
 
 /**
- * Format angka sebagai persentase
- * Contoh: 22.28 → "22.28%"
+ * Membaca API key Groq dari localStorage.
+ * Mengembalikan string kosong jika belum diisi.
  *
- * @param {number} value - Angka persen (misal: 22.28)
- * @returns {string} Persentase terformat
+ * @returns {string} API key atau "" jika belum ada
+ */
+function getGroqApiKey() {
+  return localStorage.getItem("groq_api_key") || "";
+}
+
+/**
+ * Mengecek apakah API key sudah tersimpan di localStorage.
+ *
+ * @returns {boolean} true jika API key sudah ada
+ */
+function hasGroqApiKey() {
+  const key = getGroqApiKey();
+  return key !== "" && key.startsWith("gsk_");
+}
+
+
+// =============================================================================
+// BAGIAN 3: FORMAT ANGKA
+// Fungsi helper untuk format angka agar tampil rapi di dashboard.
+// =============================================================================
+
+/**
+ * Format angka besar ke format mata uang singkat.
+ * Contoh: 5875869 → "$5.88M" | 309172 → "$309.2K" | 455 → "$455.00"
+ */
+function formatCurrency(value) {
+  if (value >= 1_000_000) {
+    return "$" + (value / 1_000_000).toFixed(2) + "M";
+  } else if (value >= 1_000) {
+    return "$" + (value / 1_000).toFixed(1) + "K";
+  }
+  return "$" + value.toFixed(2);
+}
+
+/**
+ * Format angka sebagai persentase.
+ * Contoh: 22.28 → "22.28%"
  */
 function formatPercent(value) {
   return value.toFixed(2) + "%";
 }
 
 /**
- * Format angka bulat dengan pemisah ribuan
+ * Format angka bulat dengan pemisah ribuan.
  * Contoh: 27274 → "27,274"
- *
- * @param {number} value - Angka bulat
- * @returns {string} Angka terformat dengan koma
  */
 function formatNumber(value) {
   return value.toLocaleString("en-US");
 }
 
 /**
- * Format angka untuk sumbu chart (lebih ringkas)
- * Contoh: 1500000 → "$1.5M"
- * Contoh: 50000   → "$50K"
- *
- * @param {number} value - Angka untuk label axis
- * @returns {string} Label axis terformat
+ * Format angka untuk label sumbu chart (lebih ringkas).
+ * Contoh: 1500000 → "$1.5M" | 50000 → "$50K"
  */
 function formatAxis(value) {
-  if (value >= 1_000_000) {
-    return "$" + (value / 1_000_000).toFixed(1) + "M";
-  } else if (value >= 1_000) {
-    return "$" + (value / 1_000).toFixed(0) + "K";
-  }
+  if (value >= 1_000_000) return "$" + (value / 1_000_000).toFixed(1) + "M";
+  if (value >= 1_000)     return "$" + (value / 1_000).toFixed(0) + "K";
   return "$" + value;
 }

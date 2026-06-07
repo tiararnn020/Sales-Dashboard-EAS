@@ -42,9 +42,11 @@ let DATA_ANOMALY    = null;   // isi dari data/anomaly_data.json
 document.addEventListener("DOMContentLoaded", () => {
   console.log("[app.js] Halaman siap. Mulai load data...");
 
-  // Inisialisasi tab switching terlebih dahulu
-  // agar tombol tab langsung bisa diklik meskipun data belum selesai load
+  // Inisialisasi tab switching
   initTabs();
+
+  // Inisialisasi modal API key (cek & tampilkan jika belum ada key)
+  initApiKeyModal();
 
   // Mulai load semua data JSON secara paralel
   loadAllData();
@@ -351,4 +353,95 @@ function showLoadError(message) {
   console.error("  3. Folder data/ berisi 9 file JSON");
   console.error("  4. Dashboard dibuka melalui server (bukan file://)");
   console.error("     → Gunakan Live Server di VS Code");
+}
+
+
+// =============================================================================
+// BAGIAN 9: MODAL API KEY
+// =============================================================================
+
+function initApiKeyModal() {
+  const overlay   = document.getElementById("modal-overlay");
+  const btnOpen   = document.getElementById("btn-settings");
+  const btnSave   = document.getElementById("btn-save-key");
+  const btnCancel = document.getElementById("btn-cancel-modal");
+  const inputKey  = document.getElementById("input-api-key");
+  const status    = document.getElementById("modal-status");
+
+  // Buka modal — tambah class .show ke overlay
+  function openModal() {
+    overlay.classList.add("show");
+    status.textContent = "";
+    status.className   = "modal-status";
+    // Tampilkan key yang sudah tersimpan jika ada
+    if (hasGroqApiKey()) inputKey.value = getGroqApiKey();
+    else inputKey.value = "";
+    inputKey.focus();
+  }
+
+  // Tutup modal — hapus class .show dari overlay
+  function closeModal() {
+    overlay.classList.remove("show");
+    status.textContent = "";
+    status.className   = "modal-status";
+  }
+
+  // Tombol ⚙ API Key di navbar → buka modal
+  if (btnOpen)   btnOpen.addEventListener("click", openModal);
+
+  // Tombol Tutup → tutup modal
+  if (btnCancel) btnCancel.addEventListener("click", closeModal);
+
+  // Klik area gelap di luar kotak modal → tutup modal
+  if (overlay) {
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeModal();
+    });
+  }
+
+  // Tekan Escape → tutup modal
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
+
+  // Tombol Simpan → validasi + simpan ke localStorage
+  if (btnSave) {
+    btnSave.addEventListener("click", () => {
+      const key = inputKey.value.trim();
+
+      if (!key) {
+        status.textContent = "⚠ API key tidak boleh kosong";
+        status.className   = "modal-status error";
+        return;
+      }
+      if (!key.startsWith("gsk_")) {
+        status.textContent = "⚠ Format tidak valid. Harus dimulai 'gsk_'";
+        status.className   = "modal-status error";
+        return;
+      }
+
+      // Simpan ke localStorage
+      setGroqApiKey(key);
+
+      // Tampilkan sukses lalu tutup otomatis 1.5 detik
+      status.textContent = "✓ API key berhasil disimpan!";
+      status.className   = "modal-status success";
+      setTimeout(closeModal, 1500);
+    });
+  }
+
+  // Enter di input → trigger Simpan
+  if (inputKey) {
+    inputKey.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") btnSave.click();
+    });
+  }
+
+  // Buka modal otomatis hanya jika API key belum tersimpan
+  if (!hasGroqApiKey()) {
+    console.log("[app.js] API key belum ada → tampilkan modal");
+    openModal();
+  } else {
+    console.log("[app.js] API key sudah tersimpan ✓");
+  }
 }

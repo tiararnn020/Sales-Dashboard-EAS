@@ -43,7 +43,36 @@
         Tableau
       </button>
     </div>
+
+    <!-- Tombol pengaturan API key
+         Muncul di navbar pojok kanan
+         Klik untuk buka modal input API key -->
+    <button class="btn-settings" id="btn-settings" title="Pengaturan API Key">
+      ⚙ API Key
+    </button>
   </nav>
+
+  <!-- ============================================================
+       MODAL INPUT API KEY
+  ============================================================ -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-box">
+      <h3 class="modal-title">⚙ Pengaturan API Key</h3>
+      <p class="modal-desc">Masukkan API key Groq-mu di sini</p>
+      <input
+        type="password"
+        class="modal-input"
+        id="input-api-key"
+        placeholder="gsk_xxxxxxxxxxxxxxxxxxxx"
+      />
+      <div class="modal-status" id="modal-status"></div>
+      <div class="modal-buttons">
+        <button class="modal-btn-save" id="btn-save-key">Simpan Key</button>
+        <button class="modal-btn-cancel" id="btn-cancel-modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+  <!-- /modal-overlay -->
 
   <!-- ============================================================
        FILTER BAR
