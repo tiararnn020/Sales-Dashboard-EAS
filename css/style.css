@@ -4,7 +4,6 @@
    Font: Syne Bold (judul) + Poppins (body)
 ============================================================================= */
 
-
 /* =============================================================================
    BAGIAN 1: CSS VARIABLES (PALET WARNA)
    Semua warna didefinisikan di sini sebagai variabel.
@@ -558,16 +557,18 @@ h3 { font-size: 1.1rem; }
   white-space: nowrap;
 }
 
-/* Area kosong tempat D3.js merender chart */
+/* Area chart — tinggi otomatis mengikuti SVG yang dirender D3
+   Setiap chart menghitung tingginya sendiri sesuai data */
 .chart-area {
   width: 100%;
-  min-height: 250px;   /* tinggi minimal chart */
   position: relative;
+  overflow-x: hidden;
 }
 
-/* Versi lebih tinggi untuk chart tren (line chart) */
+/* Alias untuk line chart — sama saja, tinggi diatur D3 */
 .chart-area-tall {
-  min-height: 300px;
+  width: 100%;
+  position: relative;
 }
 
 /* Loading text saat data belum selesai dimuat */
