@@ -1,0 +1,1522 @@
+[
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "Australia",
+    "segment": "Individu",
+    "sales": 186070.04,
+    "profit": 73162.74,
+    "qty": 52,
+    "orders": 52
+  },
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "Canada",
+    "segment": "Individu",
+    "sales": 21469.62,
+    "profit": 8441.85,
+    "qty": 6,
+    "orders": 6
+  },
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "Canada",
+    "segment": "Shop",
+    "sales": 96613.29,
+    "profit": -1094.95,
+    "qty": 45,
+    "orders": 20
+  },
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "Central",
+    "segment": "Shop",
+    "sales": 34351.39,
+    "profit": -389.32,
+    "qty": 16,
+    "orders": 7
+  },
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "France",
+    "segment": "Individu",
+    "sales": 17891.35,
+    "profit": 7034.88,
+    "qty": 5,
+    "orders": 5
+  },
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "Germany",
+    "segment": "Individu",
+    "sales": 42939.24,
+    "profit": 16883.71,
+    "qty": 12,
+    "orders": 12
+  },
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "Northeast",
+    "segment": "Shop",
+    "sales": 68702.78,
+    "profit": -778.63,
+    "qty": 32,
+    "orders": 16
+  },
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "Northwest",
+    "segment": "Individu",
+    "sales": 71565.4,
+    "profit": 28139.52,
+    "qty": 20,
+    "orders": 20
+  },
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "Northwest",
+    "segment": "Shop",
+    "sales": 42939.24,
+    "profit": -486.64,
+    "qty": 20,
+    "orders": 9
+  },
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "Southeast",
+    "segment": "Shop",
+    "sales": 38645.32,
+    "profit": -437.98,
+    "qty": 18,
+    "orders": 11
+  },
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "Southwest",
+    "segment": "Individu",
+    "sales": 93035.02,
+    "profit": 36581.37,
+    "qty": 26,
+    "orders": 26
+  },
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "Southwest",
+    "segment": "Shop",
+    "sales": 100907.21,
+    "profit": -1143.61,
+    "qty": 47,
+    "orders": 24
+  },
+  {
+    "year": 2001,
+    "category": "Bikes",
+    "territory": "United Kingdom",
+    "segment": "Individu",
+    "sales": 53674.05,
+    "profit": 21104.64,
+    "qty": 15,
+    "orders": 15
+  },
+  {
+    "year": 2001,
+    "category": "Clothing",
+    "territory": "Canada",
+    "segment": "Shop",
+    "sales": 727.75,
+    "profit": -76.69,
+    "qty": 141,
+    "orders": 32
+  },
+  {
+    "year": 2001,
+    "category": "Clothing",
+    "territory": "Central",
+    "segment": "Shop",
+    "sales": 340.94,
+    "profit": -41.31,
+    "qty": 67,
+    "orders": 18
+  },
+  {
+    "year": 2001,
+    "category": "Clothing",
+    "territory": "Northeast",
+    "segment": "Shop",
+    "sales": 191.9,
+    "profit": -19.19,
+    "qty": 37,
+    "orders": 14
+  },
+  {
+    "year": 2001,
+    "category": "Clothing",
+    "territory": "Northwest",
+    "segment": "Shop",
+    "sales": 342.31,
+    "profit": -34.23,
+    "qty": 66,
+    "orders": 21
+  },
+  {
+    "year": 2001,
+    "category": "Clothing",
+    "territory": "Southeast",
+    "segment": "Shop",
+    "sales": 363.06,
+    "profit": -36.31,
+    "qty": 70,
+    "orders": 20
+  },
+  {
+    "year": 2001,
+    "category": "Clothing",
+    "territory": "Southwest",
+    "segment": "Shop",
+    "sales": 720.92,
+    "profit": -72.1,
+    "qty": 139,
+    "orders": 42
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "Australia",
+    "segment": "Individu",
+    "sales": 245983.21,
+    "profit": 100022.59,
+    "qty": 79,
+    "orders": 79
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "Canada",
+    "segment": "Individu",
+    "sales": 66457.96,
+    "profit": 26268.85,
+    "qty": 19,
+    "orders": 19
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "Canada",
+    "segment": "Shop",
+    "sales": 209980.37,
+    "profit": 7663.77,
+    "qty": 129,
+    "orders": 45
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "Central",
+    "segment": "Shop",
+    "sales": 102852.41,
+    "profit": 4337.65,
+    "qty": 65,
+    "orders": 23
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "France",
+    "segment": "Individu",
+    "sales": 47068.04,
+    "profit": 19745.4,
+    "qty": 17,
+    "orders": 17
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "France",
+    "segment": "Shop",
+    "sales": 18441.88,
+    "profit": 1854.73,
+    "qty": 15,
+    "orders": 4
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "Germany",
+    "segment": "Individu",
+    "sales": 51655.56,
+    "profit": 21136.46,
+    "qty": 17,
+    "orders": 17
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "Northeast",
+    "segment": "Shop",
+    "sales": 103806.64,
+    "profit": 6115.41,
+    "qty": 71,
+    "orders": 30
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "Northwest",
+    "segment": "Individu",
+    "sales": 104320.36,
+    "profit": 42257.01,
+    "qty": 33,
+    "orders": 33
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "Northwest",
+    "segment": "Shop",
+    "sales": 146666.23,
+    "profit": 9246.5,
+    "qty": 105,
+    "orders": 29
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "Southeast",
+    "segment": "Shop",
+    "sales": 85621.62,
+    "profit": 1643.7,
+    "qty": 48,
+    "orders": 20
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "Southwest",
+    "segment": "Individu",
+    "sales": 160594.05,
+    "profit": 65759.65,
+    "qty": 53,
+    "orders": 53
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "Southwest",
+    "segment": "Shop",
+    "sales": 229306.5,
+    "profit": 12090.13,
+    "qty": 155,
+    "orders": 51
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "United Kingdom",
+    "segment": "Individu",
+    "sales": 56793.61,
+    "profit": 23982.24,
+    "qty": 21,
+    "orders": 21
+  },
+  {
+    "year": 2002,
+    "category": "Bikes",
+    "territory": "United Kingdom",
+    "segment": "Shop",
+    "sales": 31965.93,
+    "profit": 3214.87,
+    "qty": 26,
+    "orders": 7
+  },
+  {
+    "year": 2002,
+    "category": "Clothing",
+    "territory": "Canada",
+    "segment": "Shop",
+    "sales": 2310.76,
+    "profit": -135.32,
+    "qty": 457,
+    "orders": 86
+  },
+  {
+    "year": 2002,
+    "category": "Clothing",
+    "territory": "Central",
+    "segment": "Shop",
+    "sales": 871.33,
+    "profit": -26.75,
+    "qty": 168,
+    "orders": 44
+  },
+  {
+    "year": 2002,
+    "category": "Clothing",
+    "territory": "France",
+    "segment": "Shop",
+    "sales": 420.43,
+    "profit": -13.63,
+    "qty": 83,
+    "orders": 15
+  },
+  {
+    "year": 2002,
+    "category": "Clothing",
+    "territory": "Northeast",
+    "segment": "Shop",
+    "sales": 798.99,
+    "profit": -33.01,
+    "qty": 156,
+    "orders": 35
+  },
+  {
+    "year": 2002,
+    "category": "Clothing",
+    "territory": "Northwest",
+    "segment": "Shop",
+    "sales": 1102.69,
+    "profit": -62.11,
+    "qty": 217,
+    "orders": 48
+  },
+  {
+    "year": 2002,
+    "category": "Clothing",
+    "territory": "Southeast",
+    "segment": "Shop",
+    "sales": 1056.93,
+    "profit": -62.71,
+    "qty": 209,
+    "orders": 47
+  },
+  {
+    "year": 2002,
+    "category": "Clothing",
+    "territory": "Southwest",
+    "segment": "Shop",
+    "sales": 2508.75,
+    "profit": -184.08,
+    "qty": 501,
+    "orders": 101
+  },
+  {
+    "year": 2002,
+    "category": "Clothing",
+    "territory": "United Kingdom",
+    "segment": "Shop",
+    "sales": 317.74,
+    "profit": -6.5,
+    "qty": 62,
+    "orders": 12
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Australia",
+    "segment": "Individu",
+    "sales": 6317.16,
+    "profit": 3954.51,
+    "qty": 898,
+    "orders": 841
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Australia",
+    "segment": "Shop",
+    "sales": 233.53,
+    "profit": 87.96,
+    "qty": 78,
+    "orders": 18
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Canada",
+    "segment": "Individu",
+    "sales": 5875.22,
+    "profit": 3677.86,
+    "qty": 792,
+    "orders": 727
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Canada",
+    "segment": "Shop",
+    "sales": 856.53,
+    "profit": 294.77,
+    "qty": 301,
+    "orders": 48
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Central",
+    "segment": "Individu",
+    "sales": 9.98,
+    "profit": 6.25,
+    "qty": 2,
+    "orders": 2
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Central",
+    "segment": "Shop",
+    "sales": 325.54,
+    "profit": 116.52,
+    "qty": 112,
+    "orders": 23
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "France",
+    "segment": "Individu",
+    "sales": 3124.15,
+    "profit": 1955.7,
+    "qty": 476,
+    "orders": 451
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "France",
+    "segment": "Shop",
+    "sales": 376.58,
+    "profit": 133.96,
+    "qty": 130,
+    "orders": 19
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Germany",
+    "segment": "Individu",
+    "sales": 2736.27,
+    "profit": 1712.89,
+    "qty": 454,
+    "orders": 437
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Germany",
+    "segment": "Shop",
+    "sales": 500.8,
+    "profit": 163.0,
+    "qty": 181,
+    "orders": 19
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Northeast",
+    "segment": "Individu",
+    "sales": 14.97,
+    "profit": 9.37,
+    "qty": 3,
+    "orders": 3
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Northeast",
+    "segment": "Shop",
+    "sales": 394.18,
+    "profit": 138.49,
+    "qty": 137,
+    "orders": 21
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Northwest",
+    "segment": "Individu",
+    "sales": 5548.23,
+    "profit": 3473.16,
+    "qty": 781,
+    "orders": 729
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Northwest",
+    "segment": "Shop",
+    "sales": 468.81,
+    "profit": 168.34,
+    "qty": 161,
+    "orders": 23
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Southeast",
+    "segment": "Individu",
+    "sales": 9.98,
+    "profit": 6.25,
+    "qty": 2,
+    "orders": 2
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Southeast",
+    "segment": "Shop",
+    "sales": 319.65,
+    "profit": 106.89,
+    "qty": 114,
+    "orders": 20
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Southwest",
+    "segment": "Individu",
+    "sales": 7439.96,
+    "profit": 4657.38,
+    "qty": 999,
+    "orders": 921
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "Southwest",
+    "segment": "Shop",
+    "sales": 678.42,
+    "profit": 249.17,
+    "qty": 230,
+    "orders": 41
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "United Kingdom",
+    "segment": "Individu",
+    "sales": 3980.63,
+    "profit": 2491.85,
+    "qty": 633,
+    "orders": 596
+  },
+  {
+    "year": 2003,
+    "category": "Accessories",
+    "territory": "United Kingdom",
+    "segment": "Shop",
+    "sales": 327.29,
+    "profit": 122.0,
+    "qty": 110,
+    "orders": 20
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Australia",
+    "segment": "Individu",
+    "sales": 204403.2,
+    "profit": 91104.66,
+    "qty": 132,
+    "orders": 132
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Australia",
+    "segment": "Shop",
+    "sales": 6884.97,
+    "profit": 625.06,
+    "qty": 5,
+    "orders": 2
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Canada",
+    "segment": "Individu",
+    "sales": 37944.44,
+    "profit": 17071.52,
+    "qty": 21,
+    "orders": 21
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Canada",
+    "segment": "Shop",
+    "sales": 234532.2,
+    "profit": 13943.03,
+    "qty": 281,
+    "orders": 70
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Central",
+    "segment": "Shop",
+    "sales": 133235.44,
+    "profit": 9303.46,
+    "qty": 150,
+    "orders": 37
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "France",
+    "segment": "Individu",
+    "sales": 65214.26,
+    "profit": 29072.33,
+    "qty": 39,
+    "orders": 39
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "France",
+    "segment": "Shop",
+    "sales": 65444.5,
+    "profit": 2589.86,
+    "qty": 103,
+    "orders": 25
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Germany",
+    "segment": "Individu",
+    "sales": 82687.02,
+    "profit": 37011.31,
+    "qty": 49,
+    "orders": 49
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Germany",
+    "segment": "Shop",
+    "sales": 17090.9,
+    "profit": 1257.21,
+    "qty": 17,
+    "orders": 5
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Northeast",
+    "segment": "Shop",
+    "sales": 93740.96,
+    "profit": 4995.13,
+    "qty": 128,
+    "orders": 38
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Northwest",
+    "segment": "Individu",
+    "sales": 130365.86,
+    "profit": 58299.48,
+    "qty": 76,
+    "orders": 76
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Northwest",
+    "segment": "Shop",
+    "sales": 223188.49,
+    "profit": 18333.64,
+    "qty": 211,
+    "orders": 53
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Southeast",
+    "segment": "Shop",
+    "sales": 69054.85,
+    "profit": 4041.5,
+    "qty": 94,
+    "orders": 34
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Southwest",
+    "segment": "Individu",
+    "sales": 164520.65,
+    "profit": 73429.32,
+    "qty": 97,
+    "orders": 97
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "Southwest",
+    "segment": "Shop",
+    "sales": 236093.08,
+    "profit": 15539.73,
+    "qty": 286,
+    "orders": 87
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "United Kingdom",
+    "segment": "Individu",
+    "sales": 80661.96,
+    "profit": 34706.06,
+    "qty": 55,
+    "orders": 55
+  },
+  {
+    "year": 2003,
+    "category": "Bikes",
+    "territory": "United Kingdom",
+    "segment": "Shop",
+    "sales": 62410.02,
+    "profit": 3577.21,
+    "qty": 82,
+    "orders": 28
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Australia",
+    "segment": "Individu",
+    "sales": 1519.31,
+    "profit": 349.44,
+    "qty": 169,
+    "orders": 169
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Australia",
+    "segment": "Shop",
+    "sales": 661.35,
+    "profit": -217.78,
+    "qty": 127,
+    "orders": 19
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Canada",
+    "segment": "Individu",
+    "sales": 773.14,
+    "profit": 177.82,
+    "qty": 86,
+    "orders": 86
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Canada",
+    "segment": "Shop",
+    "sales": 3058.36,
+    "profit": -649.41,
+    "qty": 597,
+    "orders": 94
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Central",
+    "segment": "Shop",
+    "sales": 1307.81,
+    "profit": -300.12,
+    "qty": 256,
+    "orders": 48
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "France",
+    "segment": "Individu",
+    "sales": 881.02,
+    "profit": 202.63,
+    "qty": 98,
+    "orders": 98
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "France",
+    "segment": "Shop",
+    "sales": 968.46,
+    "profit": -267.07,
+    "qty": 189,
+    "orders": 31
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Germany",
+    "segment": "Individu",
+    "sales": 961.93,
+    "profit": 221.24,
+    "qty": 107,
+    "orders": 107
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Germany",
+    "segment": "Shop",
+    "sales": 865.15,
+    "profit": -311.64,
+    "qty": 170,
+    "orders": 22
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Northeast",
+    "segment": "Shop",
+    "sales": 1229.08,
+    "profit": -247.33,
+    "qty": 237,
+    "orders": 39
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Northwest",
+    "segment": "Individu",
+    "sales": 952.94,
+    "profit": 219.18,
+    "qty": 106,
+    "orders": 106
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Northwest",
+    "segment": "Shop",
+    "sales": 1225.41,
+    "profit": -255.62,
+    "qty": 234,
+    "orders": 47
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Southeast",
+    "segment": "Shop",
+    "sales": 982.76,
+    "profit": -168.14,
+    "qty": 189,
+    "orders": 42
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Southwest",
+    "segment": "Individu",
+    "sales": 1546.28,
+    "profit": 355.64,
+    "qty": 172,
+    "orders": 172
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "Southwest",
+    "segment": "Shop",
+    "sales": 2455.92,
+    "profit": -493.65,
+    "qty": 475,
+    "orders": 86
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "United Kingdom",
+    "segment": "Individu",
+    "sales": 1321.53,
+    "profit": 303.95,
+    "qty": 147,
+    "orders": 147
+  },
+  {
+    "year": 2003,
+    "category": "Clothing",
+    "territory": "United Kingdom",
+    "segment": "Shop",
+    "sales": 1046.65,
+    "profit": -268.87,
+    "qty": 203,
+    "orders": 30
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Australia",
+    "segment": "Individu",
+    "sales": 8655.92,
+    "profit": 5418.56,
+    "qty": 1281,
+    "orders": 1205
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Australia",
+    "segment": "Shop",
+    "sales": 128.74,
+    "profit": 48.49,
+    "qty": 43,
+    "orders": 12
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Canada",
+    "segment": "Individu",
+    "sales": 8157.15,
+    "profit": 5106.34,
+    "qty": 1107,
+    "orders": 1017
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Canada",
+    "segment": "Shop",
+    "sales": 502.16,
+    "profit": 183.02,
+    "qty": 171,
+    "orders": 32
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Central",
+    "segment": "Individu",
+    "sales": 8.98,
+    "profit": 5.62,
+    "qty": 2,
+    "orders": 2
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Central",
+    "segment": "Shop",
+    "sales": 285.33,
+    "profit": 102.43,
+    "qty": 98,
+    "orders": 16
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "France",
+    "segment": "Individu",
+    "sales": 4416.72,
+    "profit": 2764.84,
+    "qty": 690,
+    "orders": 650
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "France",
+    "segment": "Shop",
+    "sales": 277.49,
+    "profit": 102.06,
+    "qty": 94,
+    "orders": 16
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Germany",
+    "segment": "Individu",
+    "sales": 3402.49,
+    "profit": 2129.93,
+    "qty": 627,
+    "orders": 608
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Germany",
+    "segment": "Shop",
+    "sales": 298.92,
+    "profit": 108.56,
+    "qty": 102,
+    "orders": 15
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Northeast",
+    "segment": "Individu",
+    "sales": 19.96,
+    "profit": 12.49,
+    "qty": 4,
+    "orders": 3
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Northeast",
+    "segment": "Shop",
+    "sales": 295.62,
+    "profit": 108.99,
+    "qty": 100,
+    "orders": 18
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Northwest",
+    "segment": "Individu",
+    "sales": 7859.8,
+    "profit": 4920.19,
+    "qty": 1127,
+    "orders": 1053
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Northwest",
+    "segment": "Shop",
+    "sales": 327.25,
+    "profit": 118.22,
+    "qty": 112,
+    "orders": 21
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Southeast",
+    "segment": "Individu",
+    "sales": 66.53,
+    "profit": 41.65,
+    "qty": 8,
+    "orders": 7
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Southeast",
+    "segment": "Shop",
+    "sales": 213.36,
+    "profit": 78.99,
+    "qty": 72,
+    "orders": 14
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Southwest",
+    "segment": "Individu",
+    "sales": 9372.66,
+    "profit": 5867.23,
+    "qty": 1390,
+    "orders": 1304
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "Southwest",
+    "segment": "Shop",
+    "sales": 433.34,
+    "profit": 160.86,
+    "qty": 146,
+    "orders": 31
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "United Kingdom",
+    "segment": "Individu",
+    "sales": 4481.01,
+    "profit": 2805.08,
+    "qty": 785,
+    "orders": 751
+  },
+  {
+    "year": 2004,
+    "category": "Accessories",
+    "territory": "United Kingdom",
+    "segment": "Shop",
+    "sales": 233.06,
+    "profit": 85.62,
+    "qty": 79,
+    "orders": 17
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Australia",
+    "segment": "Individu",
+    "sales": 131624.09,
+    "profit": 57660.39,
+    "qty": 91,
+    "orders": 91
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Australia",
+    "segment": "Shop",
+    "sales": 4130.98,
+    "profit": 375.04,
+    "qty": 3,
+    "orders": 2
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Canada",
+    "segment": "Individu",
+    "sales": 39824.75,
+    "profit": 17608.53,
+    "qty": 25,
+    "orders": 25
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Canada",
+    "segment": "Shop",
+    "sales": 90833.87,
+    "profit": 2756.33,
+    "qty": 140,
+    "orders": 43
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Central",
+    "segment": "Shop",
+    "sales": 61640.5,
+    "profit": 3142.64,
+    "qty": 83,
+    "orders": 29
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "France",
+    "segment": "Individu",
+    "sales": 73304.52,
+    "profit": 32284.38,
+    "qty": 48,
+    "orders": 48
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "France",
+    "segment": "Shop",
+    "sales": 35370.93,
+    "profit": 783.33,
+    "qty": 61,
+    "orders": 18
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Germany",
+    "segment": "Individu",
+    "sales": 90854.39,
+    "profit": 39916.82,
+    "qty": 61,
+    "orders": 61
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Germany",
+    "segment": "Shop",
+    "sales": 5669.93,
+    "profit": 73.12,
+    "qty": 11,
+    "orders": 4
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Northeast",
+    "segment": "Shop",
+    "sales": 38369.2,
+    "profit": -832.66,
+    "qty": 85,
+    "orders": 22
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Northwest",
+    "segment": "Individu",
+    "sales": 91259.35,
+    "profit": 39855.51,
+    "qty": 65,
+    "orders": 65
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Northwest",
+    "segment": "Shop",
+    "sales": 154004.61,
+    "profit": 10028.37,
+    "qty": 152,
+    "orders": 38
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Southeast",
+    "segment": "Shop",
+    "sales": 57509.52,
+    "profit": 2767.6,
+    "qty": 80,
+    "orders": 30
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Southwest",
+    "segment": "Individu",
+    "sales": 154438.96,
+    "profit": 67832.83,
+    "qty": 104,
+    "orders": 104
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "Southwest",
+    "segment": "Shop",
+    "sales": 156583.97,
+    "profit": 6964.12,
+    "qty": 216,
+    "orders": 59
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "United Kingdom",
+    "segment": "Individu",
+    "sales": 58454.6,
+    "profit": 25633.65,
+    "qty": 40,
+    "orders": 40
+  },
+  {
+    "year": 2004,
+    "category": "Bikes",
+    "territory": "United Kingdom",
+    "segment": "Shop",
+    "sales": 54000.86,
+    "profit": 2572.82,
+    "qty": 73,
+    "orders": 21
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Australia",
+    "segment": "Individu",
+    "sales": 2292.45,
+    "profit": 527.26,
+    "qty": 255,
+    "orders": 255
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Australia",
+    "segment": "Shop",
+    "sales": 355.64,
+    "profit": -115.07,
+    "qty": 68,
+    "orders": 14
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Canada",
+    "segment": "Individu",
+    "sales": 1402.44,
+    "profit": 322.56,
+    "qty": 156,
+    "orders": 156
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Canada",
+    "segment": "Shop",
+    "sales": 1054.3,
+    "profit": -337.09,
+    "qty": 201,
+    "orders": 32
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Central",
+    "segment": "Shop",
+    "sales": 495.11,
+    "profit": -148.67,
+    "qty": 93,
+    "orders": 19
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "France",
+    "segment": "Individu",
+    "sales": 1249.61,
+    "profit": 287.41,
+    "qty": 139,
+    "orders": 139
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "France",
+    "segment": "Shop",
+    "sales": 413.91,
+    "profit": -126.03,
+    "qty": 78,
+    "orders": 13
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Germany",
+    "segment": "Individu",
+    "sales": 1528.3,
+    "profit": 351.51,
+    "qty": 170,
+    "orders": 170
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Germany",
+    "segment": "Shop",
+    "sales": 564.59,
+    "profit": -183.02,
+    "qty": 108,
+    "orders": 16
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Northeast",
+    "segment": "Individu",
+    "sales": 17.98,
+    "profit": 4.14,
+    "qty": 2,
+    "orders": 2
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Northeast",
+    "segment": "Shop",
+    "sales": 442.31,
+    "profit": -125.32,
+    "qty": 82,
+    "orders": 20
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Northwest",
+    "segment": "Individu",
+    "sales": 1537.29,
+    "profit": 353.58,
+    "qty": 171,
+    "orders": 171
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Northwest",
+    "segment": "Shop",
+    "sales": 491.7,
+    "profit": -152.07,
+    "qty": 93,
+    "orders": 19
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Southeast",
+    "segment": "Individu",
+    "sales": 8.99,
+    "profit": 2.07,
+    "qty": 1,
+    "orders": 1
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Southeast",
+    "segment": "Shop",
+    "sales": 362.81,
+    "profit": -107.9,
+    "qty": 68,
+    "orders": 14
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Southwest",
+    "segment": "Individu",
+    "sales": 2049.72,
+    "profit": 471.44,
+    "qty": 228,
+    "orders": 228
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "Southwest",
+    "segment": "Shop",
+    "sales": 987.59,
+    "profit": -306.88,
+    "qty": 187,
+    "orders": 35
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "United Kingdom",
+    "segment": "Individu",
+    "sales": 1645.17,
+    "profit": 378.39,
+    "qty": 183,
+    "orders": 183
+  },
+  {
+    "year": 2004,
+    "category": "Clothing",
+    "territory": "United Kingdom",
+    "segment": "Shop",
+    "sales": 497.95,
+    "profit": -145.82,
+    "qty": 93,
+    "orders": 17
+  }
+]

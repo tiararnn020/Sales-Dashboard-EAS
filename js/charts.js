@@ -264,7 +264,7 @@ function renderCategoryChart() {
   clearChart(cid);
   if (!DATA_CATEGORY?.length) return;
 
-  const data   = DATA_CATEGORY;
+  const data   = (FILTERED_CATEGORY?.length) ? FILTERED_CATEGORY : DATA_CATEGORY;
   const margin = { top:28, right:24, bottom:46, left:80 };
   const W      = getW(cid);
   const width  = W - margin.left - margin.right;
@@ -379,7 +379,8 @@ function renderTerritoryChart() {
   clearChart(cid);
   if (!DATA_TERRITORY?.length) return;
 
-  const data   = [...DATA_TERRITORY].sort((a, b) => b.sales - a.sales);
+  const raw  = (FILTERED_TERRITORY?.length) ? FILTERED_TERRITORY : DATA_TERRITORY;
+  const data = [...raw].sort((a,b) => b.sales - a.sales);
   const margin = { top:10, right:70, bottom:34, left:108 };
   const W      = getW(cid);
   const width  = W - margin.left - margin.right;

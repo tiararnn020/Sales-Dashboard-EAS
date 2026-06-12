@@ -32,6 +32,10 @@ let DATA_TOP10      = null;   // isi dari data/top10.json
 let DATA_FILTERS    = null;   // isi dari data/filters.json
 let DATA_ANOMALY    = null;   // isi dari data/anomaly_data.json
 
+// TAMBAHKAN 3 BARIS INI (baru, belum ada di file lamamu)
+let DATA_DETAIL     = null;   // data/detail_data.json
+let FILTERED_CATEGORY  = null;
+let FILTERED_TERRITORY = null;
 
 // =============================================================================
 // BAGIAN 2: ENTRY POINT
@@ -69,7 +73,8 @@ async function loadAllData() {
 
     // Promise.all menjalankan semua fetch secara BERSAMAAN
     // Hasilnya: array berisi semua data dalam urutan yang sama
-    const [kpi, category, subcategory, territory, trend, scatter, top10, filters, anomaly] =
+    // GANTI baris Promise.all yang lama dengan ini:
+    const [kpi, category, subcategory, territory, trend, scatter, top10, filters, anomaly, detail] =
       await Promise.all([
         fetchJSON(CONFIG.DATA_PATH + "kpi.json"),
         fetchJSON(CONFIG.DATA_PATH + "by_category.json"),
@@ -80,9 +85,10 @@ async function loadAllData() {
         fetchJSON(CONFIG.DATA_PATH + "top10.json"),
         fetchJSON(CONFIG.DATA_PATH + "filters.json"),
         fetchJSON(CONFIG.DATA_PATH + "anomaly_data.json"),
+        fetchJSON(CONFIG.DATA_PATH + "detail_data.json"),  // ← TAMBAHAN
       ]);
 
-    // Simpan semua data ke variabel global
+    // Simpan seperti biasa, TAMBAH 3 baris baru:
     DATA_KPI         = kpi;
     DATA_CATEGORY    = category;
     DATA_SUBCATEGORY = subcategory;
@@ -92,6 +98,9 @@ async function loadAllData() {
     DATA_TOP10       = top10;
     DATA_FILTERS     = filters;
     DATA_ANOMALY     = anomaly;
+    DATA_DETAIL      = detail;              // ← TAMBAHAN
+    FILTERED_CATEGORY  = DATA_CATEGORY;    // ← TAMBAHAN
+    FILTERED_TERRITORY = DATA_TERRITORY;   // ← TAMBAHAN
 
     console.log("[app.js] Semua data berhasil di-load ✓");
     console.log(`  KPI: total sales = ${DATA_KPI.total_sales}`);
@@ -298,13 +307,102 @@ function loadTableauEmbed() {
  * Dipanggil oleh filters.js setiap kali ada perubahan filter.
  * Fungsi ini akan diisi dengan re-render chart di Hari 4 dan 5.
  */
+
+function applyFiltersToDetail() {
+  if (!DATA_DETAIL) return [];
+  return DATA_DETAIL.filter(d => {
+    if (ACTIVE_FILTERS.year      !== "all" && String(d.year) !== ACTIVE_FILTERS.year)      return false;
+    if (ACTIVE_FILTERS.category  !== "all" && d.category     !== ACTIVE_FILTERS.category)  return false;
+    if (ACTIVE_FILTERS.territory !== "all" && d.territory    !== ACTIVE_FILTERS.territory) return false;
+    if (ACTIVE_FILTERS.segment   !== "all" && d.segment      !== ACTIVE_FILTERS.segment)   return false;
+    return true;
+  });
+}
+
+function computeFilteredKPI(filtered) {
+  if (!filtered.length) return { total_sales:0, total_profit:0, profit_margin:0, total_qty:0, total_orders:0 };
+  const sales  = filtered.reduce((s,d) => s + d.sales,  0);
+  const profit = filtered.reduce((s,d) => s + d.profit, 0);
+  const qty    = filtered.reduce((s,d) => s + d.qty,    0);
+  const orders = filtered.reduce((s,d) => s + d.orders, 0);
+  return {
+    total_sales:   Math.round(sales   * 100) / 100,
+    total_profit:  Math.round(profit  * 100) / 100,
+    profit_margin: sales > 0 ? Math.round(profit / sales * 10000) / 100 : 0,
+    total_qty:     qty,
+    total_orders:  orders,
+  };
+}
+
+function computeFilteredCategory(filtered) {
+  const map = {};
+  filtered.forEach(d => {
+    if (!map[d.category]) map[d.category] = { category:d.category, sales:0, profit:0, qty:0, orders:0 };
+    map[d.category].sales   += d.sales;
+    map[d.category].profit  += d.profit;
+    map[d.category].qty     += d.qty;
+    map[d.category].orders  += d.orders;
+  });
+  return Object.values(map).map(d => ({
+    ...d,
+    sales:  Math.round(d.sales  * 100) / 100,
+    profit: Math.round(d.profit * 100) / 100,
+    margin: d.sales > 0 ? Math.round(d.profit / d.sales * 10000) / 100 : 0,
+  })).sort((a,b) => b.sales - a.sales);
+}
+
+function computeFilteredTerritory(filtered) {
+  const map = {};
+  filtered.forEach(d => {
+    if (!map[d.territory]) map[d.territory] = { territory:d.territory, sales:0, profit:0, qty:0, orders:0, customers:0 };
+    map[d.territory].sales   += d.sales;
+    map[d.territory].profit  += d.profit;
+    map[d.territory].qty     += d.qty;
+    map[d.territory].orders  += d.orders;
+  });
+  return Object.values(map).map(d => ({
+    ...d,
+    sales:  Math.round(d.sales  * 100) / 100,
+    profit: Math.round(d.profit * 100) / 100,
+    margin: d.sales > 0 ? Math.round(d.profit / d.sales * 10000) / 100 : 0,
+  })).sort((a,b) => b.sales - a.sales);
+}
+
+function updateFilterIndicator() {
+  const active = Object.entries(ACTIVE_FILTERS)
+    .filter(([,v]) => v !== "all")
+    .map(([k,v]) => `${k}: ${v}`);
+  document.querySelectorAll(".filter-indicator").forEach(el => el.remove());
+  if (active.length === 0) return;
+  const badge = document.createElement("div");
+  badge.className = "filter-indicator";
+  badge.style.cssText =
+    "display:inline-flex;align-items:center;gap:8px;padding:4px 12px;" +
+    "background:rgba(2,195,189,0.1);border:1px solid rgba(2,195,189,0.3);" +
+    "border-radius:20px;font-size:11px;color:#02C3BD;margin-top:8px;" +
+    "font-family:'Poppins',sans-serif;flex-wrap:wrap;";
+  badge.innerHTML = `<span>⊙ Filter aktif:</span>` +
+    active.map(a => `<span style="background:rgba(2,195,189,0.15);padding:2px 8px;border-radius:10px;">${a}</span>`).join("") +
+    `<button onclick="document.getElementById('btn-reset-filter').click()" ` +
+    `style="background:none;border:none;color:#E57A44;cursor:pointer;font-size:11px;padding:0;">✕ Reset</button>`;
+  const setupZone = document.querySelector(".zone-setup .narrative-sub");
+  if (setupZone) setupZone.after(badge);
+}
+
 function onFiltersChanged() {
   console.log("[app.js] Filter berubah:", ACTIVE_FILTERS);
-
-  // Re-render chart berdasarkan filter baru (akan diimplementasi Hari 4-5)
-  if (typeof renderAllCharts === "function") {
-    renderAllCharts();
-  }
+  if (!DATA_DETAIL) return;
+  const filtered = applyFiltersToDetail();
+  const filteredKPI = computeFilteredKPI(filtered);
+  setElementText("kpi-sales",  formatCurrency(filteredKPI.total_sales));
+  setElementText("kpi-profit", formatCurrency(filteredKPI.total_profit));
+  setElementText("kpi-margin", formatPercent(filteredKPI.profit_margin));
+  setElementText("kpi-qty",    formatNumber(filteredKPI.total_qty));
+  setElementText("kpi-orders", formatNumber(filteredKPI.total_orders) + " orders");
+  FILTERED_CATEGORY  = filtered.length ? computeFilteredCategory(filtered)  : DATA_CATEGORY;
+  FILTERED_TERRITORY = filtered.length ? computeFilteredTerritory(filtered) : DATA_TERRITORY;
+  if (typeof renderAllCharts === "function") renderAllCharts();
+  updateFilterIndicator();
 }
 
 

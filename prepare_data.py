@@ -364,6 +364,33 @@ with open(f"{OUTPUT_FOLDER}/anomaly_data.json", "w") as f:
 
 print(f"[OK] anomaly_data.json → {len(anomaly_list)} data poin")
 
+# ── 9. DETAIL DATA untuk filter client-side ──────────────────────────────
+# Agregasi berdasarkan 4 dimensi: Year × Category × Territory × Segment
+# Digunakan app.js untuk hitung KPI dan chart sesuai filter aktif
+# Ukuran: maks ~240 baris, sangat ringan di browser
+detail = df.groupby(['Year','Category','Territory','Segment']).agg(
+    sales   = ('Sales',   'sum'),
+    profit  = ('Profit',  'sum'),
+    qty     = ('Qty',     'sum'),
+    orders  = ('SalesOrderID', 'nunique')
+).reset_index()
+
+detail_list = []
+for _, row in detail.iterrows():
+    detail_list.append({
+        "year":      int(row['Year']),
+        "category":  row['Category'],
+        "territory": row['Territory'],
+        "segment":   row['Segment'],
+        "sales":     round(row['sales'], 2),
+        "profit":    round(row['profit'], 2),
+        "qty":       int(row['qty']),
+        "orders":    int(row['orders'])
+    })
+with open('data/detail_data.json', 'w') as f:
+    json.dump(detail_list, f, indent=2)
+print("✓ detail_data.json")
+
 # =============================================================================
 # SELESAI: Tampilkan ringkasan semua file yang dibuat
 # =============================================================================
