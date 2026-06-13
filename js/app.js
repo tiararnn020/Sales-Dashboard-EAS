@@ -161,6 +161,11 @@ function initDashboard() {
     detectAnomalies(DATA_ANOMALY);
   }
 
+  // AI Buttons (aiInsight.js)
+  if (typeof initAIButtons === "function") {
+    initAIButtons();
+  }
+
   // 4. Render semua chart (charts.js — akan diimplementasi Hari 4)
   if (typeof renderAllCharts === "function") {
     renderAllCharts();
