@@ -852,10 +852,11 @@ h3 { font-size: 1.1rem; }
 }
 
 /* Iframe Tableau */
-.tableau-frame-wrapper iframe {
+.tableau-frame-wrapper object.tableauViz {
   width: 100%;
-  height: 700px;
+  min-height: 818px;
   border: none;
+  display: block;
 }
 
 /* Placeholder saat URL Tableau belum diisi */

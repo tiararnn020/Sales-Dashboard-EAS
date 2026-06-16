@@ -33,7 +33,7 @@ const CONFIG = {
 
   // URL Tableau Public — isi setelah publish workbook
   // Bentuk: "https://public.tableau.com/views/NamaFile/NamaDashboard"
-  TABLEAU_URL: "",   // ← isi setelah buat Tableau dashboard
+  TABLEAU_URL: "https://public.tableau.com/views/Sales-Dashboard-EAS/Dashboard1",   // ← isi setelah buat Tableau dashboard
 
   // Path folder data JSON
   DATA_PATH: "data/",

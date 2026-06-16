@@ -278,21 +278,63 @@ function loadTableauEmbed() {
   const wrapper = document.getElementById("tableau-frame-wrapper");
   if (!wrapper) return;
 
-  if (CONFIG.TABLEAU_URL && CONFIG.TABLEAU_URL.trim() !== "") {
-    wrapper.innerHTML = `
-      <iframe
-        src="${CONFIG.TABLEAU_URL}"
-        width="100%"
-        height="700"
-        frameborder="0"
-        allowfullscreen
-        title="Tableau Dashboard">
-      </iframe>
-    `;
-    console.log("[app.js] Tableau embed dimuat ✓");
-  } else {
+  if (!CONFIG.TABLEAU_URL || CONFIG.TABLEAU_URL.trim() === "") {
     console.warn("[app.js] TABLEAU_URL belum diisi di config.js");
+    return;
   }
+
+  // Gunakan Tableau Embed API via <tableau-viz> web component
+  // Lebih stabil dan responsif dibanding iframe biasa
+  wrapper.innerHTML = `
+    <div class='tableauPlaceholder' style='position:relative;width:100%;'>
+      <object class='tableauViz' style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+        <param name='embed_code_version' value='3' />
+        <param name='site_root' value='' />
+        <param name='name' value='Sales-Dashboard-EAS/Dashboard1' />
+        <param name='tabs' value='yes' />
+        <param name='toolbar' value='yes' />
+        <param name='animate_transition' value='yes' />
+        <param name='display_static_image' value='yes' />
+        <param name='display_spinner' value='yes' />
+        <param name='display_overlay' value='yes' />
+        <param name='display_count' value='yes' />
+        <param name='language' value='en-US' />
+      </object>
+    </div>
+  `;
+
+  // Load Tableau JS API
+  const script = document.createElement('script');
+  script.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  
+  script.onload = () => {
+    console.log("[app.js] Tableau embed dimuat ✓");
+  };
+
+  const vizObj = wrapper.querySelector('object.tableauViz');
+  if (vizObj) {
+    vizObj.parentNode.insertBefore(script, vizObj);
+  } else {
+    wrapper.appendChild(script);
+  }
+
+  // Set ukuran responsif
+  // Set ukuran responsif — paksa fit ke container
+  const placeholder = wrapper.querySelector('.tableauPlaceholder');
+  const viz = wrapper.querySelector('object.tableauViz');
+    if (placeholder && viz) {
+      placeholder.style.width = '100%';
+      viz.style.width     = '100%';
+      viz.style.minWidth  = 'unset';
+      viz.style.maxWidth  = '100%';
+      viz.style.minHeight = '750px';
+      viz.style.maxHeight = '750px';
+      viz.style.display   = 'block';
+    }
+  
+
+  console.log("[app.js] Tableau embed dimuat ✓");
 }
 
 
