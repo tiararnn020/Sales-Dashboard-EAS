@@ -120,7 +120,12 @@ function formatNumber(value) {
  * Contoh: 1500000 → "$1.5M" | 50000 → "$50K"
  */
 function formatAxis(value) {
-  if (value >= 1_000_000) return "$" + (value / 1_000_000).toFixed(1) + "M";
-  if (value >= 1_000)     return "$" + (value / 1_000).toFixed(0) + "K";
-  return "$" + value;
+  const neg = value < 0;
+  const abs = Math.abs(value);
+  const sign = neg ? "-" : "";
+  if (abs >= 1e12) return sign + "$" + (abs/1e12).toFixed(1) + "T";
+  if (abs >= 1e9)  return sign + "$" + (abs/1e9).toFixed(1)  + "B";
+  if (abs >= 1e6)  return sign + "$" + (abs/1e6).toFixed(1)  + "M";
+  if (abs >= 1e3)  return sign + "$" + (abs/1e3).toFixed(0)  + "K";
+  return sign + "$" + abs.toFixed(0);
 }
