@@ -12,14 +12,14 @@
 //
 // URUTAN EKSEKUSI:
 // Halaman load → DOMContentLoaded → loadAllData() → initDashboard()
-// → renderKPI() + initTabs() + initFilters() + (chart di hari berikutnya)
+// → renderKPI() + initTabs() + initFilters() + chart + anomali + narasi
 // =============================================================================
 
 
 // =============================================================================
 // BAGIAN 1: VARIABEL GLOBAL DATA
 // Semua data JSON disimpan di sini setelah berhasil di-load.
-// Modul lain (charts.js, anomaly.js, dll) bisa akses variabel ini.
+// Modul lain (charts.js, anomaly.js, storyEngine.js, dll) akses variabel ini.
 // =============================================================================
 
 let DATA_KPI        = null;   // isi dari data/kpi.json
@@ -31,11 +31,13 @@ let DATA_SCATTER    = null;   // isi dari data/scatter.json
 let DATA_TOP10      = null;   // isi dari data/top10.json
 let DATA_FILTERS    = null;   // isi dari data/filters.json
 let DATA_ANOMALY    = null;   // isi dari data/anomaly_data.json
+let DATA_DETAIL     = null;   // isi dari data/detail_data.json
 
-// TAMBAHKAN 3 BARIS INI (baru, belum ada di file lamamu)
-let DATA_DETAIL     = null;   // data/detail_data.json
+// Data yang sudah difilter — dipakai oleh charts.js DAN storyEngine.js
+// agar keduanya selalu merefleksikan filter yang sama secara konsisten.
 let FILTERED_CATEGORY  = null;
 let FILTERED_TERRITORY = null;
+
 
 // =============================================================================
 // BAGIAN 2: ENTRY POINT
@@ -73,7 +75,6 @@ async function loadAllData() {
 
     // Promise.all menjalankan semua fetch secara BERSAMAAN
     // Hasilnya: array berisi semua data dalam urutan yang sama
-    // GANTI baris Promise.all yang lama dengan ini:
     const [kpi, category, subcategory, territory, trend, scatter, top10, filters, anomaly, detail] =
       await Promise.all([
         fetchJSON(CONFIG.DATA_PATH + "kpi.json"),
@@ -85,10 +86,10 @@ async function loadAllData() {
         fetchJSON(CONFIG.DATA_PATH + "top10.json"),
         fetchJSON(CONFIG.DATA_PATH + "filters.json"),
         fetchJSON(CONFIG.DATA_PATH + "anomaly_data.json"),
-        fetchJSON(CONFIG.DATA_PATH + "detail_data.json"),  // ← TAMBAHAN
+        fetchJSON(CONFIG.DATA_PATH + "detail_data.json"),
       ]);
 
-    // Simpan seperti biasa, TAMBAH 3 baris baru:
+    // Simpan semua data ke variabel global
     DATA_KPI         = kpi;
     DATA_CATEGORY    = category;
     DATA_SUBCATEGORY = subcategory;
@@ -98,9 +99,11 @@ async function loadAllData() {
     DATA_TOP10       = top10;
     DATA_FILTERS     = filters;
     DATA_ANOMALY     = anomaly;
-    DATA_DETAIL      = detail;              // ← TAMBAHAN
-    FILTERED_CATEGORY  = DATA_CATEGORY;    // ← TAMBAHAN
-    FILTERED_TERRITORY = DATA_TERRITORY;   // ← TAMBAHAN
+    DATA_DETAIL      = detail;
+
+    // Inisialisasi data terfilter = data penuh (belum ada filter aktif saat load awal)
+    FILTERED_CATEGORY  = DATA_CATEGORY;
+    FILTERED_TERRITORY = DATA_TERRITORY;
 
     console.log("[app.js] Semua data berhasil di-load ✓");
     console.log(`  KPI: total sales = ${DATA_KPI.total_sales}`);
@@ -145,7 +148,12 @@ async function fetchJSON(url) {
 
 /**
  * Menginisialisasi semua komponen dashboard setelah data siap.
- * Urutan: KPI → Filter → Anomali → Chart (diimplementasi hari berikutnya)
+ * Urutan: KPI → Filter → Anomali → AI Buttons → Chart → Narasi
+ *
+ * Urutan ini sengaja: narasi (storyEngine) dipanggil PALING TERAKHIR
+ * karena updateNarrative() membaca FILTERED_CATEGORY/FILTERED_TERRITORY
+ * yang sudah pasti final di titik ini (tidak ada modifikasi async lain
+ * yang masih berjalan terhadap kedua variabel tersebut).
  */
 function initDashboard() {
   console.log("[app.js] Inisialisasi dashboard...");
@@ -156,24 +164,30 @@ function initDashboard() {
   // 2. Inisialisasi dropdown filter dari DATA_FILTERS
   initFilters(DATA_FILTERS);
 
-  // 3. Deteksi anomali (anomaly.js — akan diimplementasi Hari 7)
+  // 3. Deteksi anomali (anomaly.js — Hari 7)
   if (typeof detectAnomalies === "function") {
     detectAnomalies(DATA_ANOMALY);
   }
 
-  // AI Buttons (aiInsight.js)
+  // 4. AI Buttons (aiInsight.js — Hari 6)
   if (typeof initAIButtons === "function") {
     initAIButtons();
   }
 
-  // 4. Render semua chart (charts.js — akan diimplementasi Hari 4)
+  // 5. Render semua chart (charts.js — Hari 3-4)
   if (typeof renderAllCharts === "function") {
     renderAllCharts();
   }
 
-  // 5. Generate judul naratif AI (storyEngine.js — Hari 8)
-  if (typeof generateNarrativeTitle === "function") {
-    generateNarrativeTitle(DATA_KPI, DATA_CATEGORY, DATA_TERRITORY);
+  // 6. Generate judul naratif otomatis (storyEngine.js — Hari 8)
+  // Dipanggil tanpa parameter — updateNarrative() membaca FILTERED_CATEGORY
+  // dan FILTERED_TERRITORY langsung dari variabel global. Ini penting karena
+  // fungsi yang sama juga dipanggil ulang dari onFiltersChanged() setiap
+  // filter berubah, dan kedua titik panggil harus konsisten menggunakan
+  // source data yang sama (bukan DATA_KPI/DATA_CATEGORY mentah yang tidak
+  // merefleksikan filter aktif).
+  if (typeof updateNarrative === "function") {
+    updateNarrative();
   }
 
   console.log("[app.js] Dashboard siap ✓");
@@ -196,10 +210,7 @@ function renderKPI() {
   const kpi = DATA_KPI;
 
   // ── KPI 1: Total Sales ──
-  // Tampilkan angka total penjualan dalam format "$X.XXM"
   setElementText("kpi-sales",  formatCurrency(kpi.total_sales));
-
-  // Tampilkan periode data di sub-teks card Total Sales
   setElementText("kpi-period", kpi.date_start + " – " + kpi.date_end);
 
   // ── KPI 2: Total Profit ──
@@ -210,8 +221,6 @@ function renderKPI() {
 
   // ── KPI 4: Total Qty Sold ──
   setElementText("kpi-qty",    formatNumber(kpi.total_qty));
-
-  // Tampilkan total orders di sub-teks card Total Qty
   setElementText("kpi-orders", formatNumber(kpi.total_orders) + " orders");
 
   console.log("[app.js] KPI cards selesai dirender ✓");
@@ -231,36 +240,24 @@ function renderKPI() {
  * - Konten tab lain disembunyikan
  */
 function initTabs() {
-  // Ambil semua tombol tab (elemen dengan class "tab-btn")
   const tabButtons = document.querySelectorAll(".tab-btn");
 
-  // Pasang event listener ke setiap tombol tab
   tabButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      // Ambil nama tab dari atribut data-tab di HTML
-      // Contoh: <button data-tab="dashboard"> → tabName = "dashboard"
       const tabName = btn.getAttribute("data-tab");
 
-      // Hapus class "active" dari semua tombol tab
       tabButtons.forEach((b) => b.classList.remove("active"));
-
-      // Tambahkan class "active" ke tombol yang diklik
       btn.classList.add("active");
 
-      // Sembunyikan semua konten tab
       document.querySelectorAll(".tab-content").forEach((content) => {
         content.classList.remove("active");
       });
 
-      // Tampilkan konten tab yang sesuai
-      // ID konten tab = "tab-" + nama tab
-      // Contoh: tabName = "dashboard" → tampilkan #tab-dashboard
       const targetContent = document.getElementById("tab-" + tabName);
       if (targetContent) {
         targetContent.classList.add("active");
       }
 
-      // Khusus tab Tableau: load iframe jika belum ada
       if (tabName === "tableau") {
         loadTableauEmbed();
       }
@@ -281,9 +278,7 @@ function loadTableauEmbed() {
   const wrapper = document.getElementById("tableau-frame-wrapper");
   if (!wrapper) return;
 
-  // Jika URL Tableau sudah diisi di config.js
   if (CONFIG.TABLEAU_URL && CONFIG.TABLEAU_URL.trim() !== "") {
-    // Buat iframe untuk embed Tableau
     wrapper.innerHTML = `
       <iframe
         src="${CONFIG.TABLEAU_URL}"
@@ -296,7 +291,6 @@ function loadTableauEmbed() {
     `;
     console.log("[app.js] Tableau embed dimuat ✓");
   } else {
-    // Jika URL belum diisi, tetap tampilkan placeholder
     console.warn("[app.js] TABLEAU_URL belum diisi di config.js");
   }
 }
@@ -304,15 +298,16 @@ function loadTableauEmbed() {
 
 // =============================================================================
 // BAGIAN 7: CALLBACK SAAT FILTER BERUBAH
-// Fungsi ini dipanggil oleh filters.js setiap kali user mengubah filter.
-// Saat ini hanya log ke console — chart re-render akan ditambah Hari 4-5.
+// Dipanggil oleh filters.js setiap kali user mengubah salah satu dropdown
+// filter (tahun/kategori/territory/segment). Menghitung ulang KPI dan
+// agregasi kategori/territory dari DATA_DETAIL, lalu memicu re-render
+// chart dan narasi agar semuanya konsisten dengan filter aktif.
 // =============================================================================
 
 /**
- * Dipanggil oleh filters.js setiap kali ada perubahan filter.
- * Fungsi ini akan diisi dengan re-render chart di Hari 4 dan 5.
+ * Menerapkan ACTIVE_FILTERS ke DATA_DETAIL (data transaksi level detail).
+ * @returns {Array} Baris data yang lolos semua kriteria filter aktif
  */
-
 function applyFiltersToDetail() {
   if (!DATA_DETAIL) return [];
   return DATA_DETAIL.filter(d => {
@@ -324,6 +319,11 @@ function applyFiltersToDetail() {
   });
 }
 
+/**
+ * Menghitung ulang KPI ringkasan dari data yang sudah difilter.
+ * @param   {Array} filtered - Hasil dari applyFiltersToDetail()
+ * @returns {Object} { total_sales, total_profit, profit_margin, total_qty, total_orders }
+ */
 function computeFilteredKPI(filtered) {
   if (!filtered.length) return { total_sales:0, total_profit:0, profit_margin:0, total_qty:0, total_orders:0 };
   const sales  = filtered.reduce((s,d) => s + d.sales,  0);
@@ -339,6 +339,11 @@ function computeFilteredKPI(filtered) {
   };
 }
 
+/**
+ * Mengagregasi data terfilter per kategori (untuk chart category + storyEngine).
+ * @param   {Array} filtered - Hasil dari applyFiltersToDetail()
+ * @returns {Array} Array { category, sales, profit, margin, qty, orders }, diurutkan by sales desc
+ */
 function computeFilteredCategory(filtered) {
   const map = {};
   filtered.forEach(d => {
@@ -356,6 +361,11 @@ function computeFilteredCategory(filtered) {
   })).sort((a,b) => b.sales - a.sales);
 }
 
+/**
+ * Mengagregasi data terfilter per territory (untuk chart territory + storyEngine).
+ * @param   {Array} filtered - Hasil dari applyFiltersToDetail()
+ * @returns {Array} Array { territory, sales, profit, margin, qty, orders, customers }, diurutkan by sales desc
+ */
 function computeFilteredTerritory(filtered) {
   const map = {};
   filtered.forEach(d => {
@@ -373,6 +383,11 @@ function computeFilteredTerritory(filtered) {
   })).sort((a,b) => b.sales - a.sales);
 }
 
+/**
+ * Menampilkan badge "Filter aktif: ..." di bawah narrative-sub.
+ * Badge dihapus dan dibuat ulang setiap panggilan agar tidak menumpuk
+ * saat filter diubah berkali-kali.
+ */
 function updateFilterIndicator() {
   const active = Object.entries(ACTIVE_FILTERS)
     .filter(([,v]) => v !== "all")
@@ -394,19 +409,44 @@ function updateFilterIndicator() {
   if (setupZone) setupZone.after(badge);
 }
 
+/**
+ * Dipanggil oleh filters.js setiap kali ACTIVE_FILTERS berubah.
+ *
+ * Urutan operasi:
+ *   1. Terapkan filter ke DATA_DETAIL → hitung ulang KPI, category, territory
+ *   2. Update teks KPI cards
+ *   3. Update FILTERED_CATEGORY/FILTERED_TERRITORY (dibaca oleh charts.js
+ *      dan storyEngine.js)
+ *   4. Re-render semua chart dengan data baru
+ *   5. Re-generate narasi (storyEngine.js) dengan data baru
+ *   6. Tampilkan badge indikator filter aktif
+ *
+ * updateNarrative() dipanggil SETELAH FILTERED_CATEGORY/FILTERED_TERRITORY
+ * diperbarui (langkah 3) — urutan ini wajib, karena storyEngine.js membaca
+ * kedua variabel tersebut secara langsung, bukan menerima parameter.
+ */
 function onFiltersChanged() {
   console.log("[app.js] Filter berubah:", ACTIVE_FILTERS);
   if (!DATA_DETAIL) return;
-  const filtered = applyFiltersToDetail();
+
+  const filtered    = applyFiltersToDetail();
   const filteredKPI = computeFilteredKPI(filtered);
+
   setElementText("kpi-sales",  formatCurrency(filteredKPI.total_sales));
   setElementText("kpi-profit", formatCurrency(filteredKPI.total_profit));
   setElementText("kpi-margin", formatPercent(filteredKPI.profit_margin));
   setElementText("kpi-qty",    formatNumber(filteredKPI.total_qty));
   setElementText("kpi-orders", formatNumber(filteredKPI.total_orders) + " orders");
+
   FILTERED_CATEGORY  = filtered.length ? computeFilteredCategory(filtered)  : DATA_CATEGORY;
   FILTERED_TERRITORY = filtered.length ? computeFilteredTerritory(filtered) : DATA_TERRITORY;
+
   if (typeof renderAllCharts === "function") renderAllCharts();
+
+  // Re-generate narasi otomatis (storyEngine.js — Hari 8) agar judul dan
+  // anotasi chart-title selalu merefleksikan filter yang baru diterapkan.
+  if (typeof updateNarrative === "function") updateNarrative();
+
   updateFilterIndicator();
 }
 
@@ -429,7 +469,6 @@ function setElementText(elementId, text) {
   if (el) {
     el.textContent = text;
   } else {
-    // Jika elemen tidak ditemukan, catat warning tapi jangan error
     console.warn(`[app.js] Elemen #${elementId} tidak ditemukan`);
   }
 }
@@ -441,19 +480,17 @@ function setElementText(elementId, text) {
  * @param {string} message - Pesan error yang akan ditampilkan
  */
 function showLoadError(message) {
-  // Cari elemen judul naratif untuk tampilkan error
   const titleEl = document.getElementById("narrative-title");
   if (titleEl) {
     titleEl.textContent = "⚠ Gagal memuat data dashboard";
-    titleEl.style.color = "#E57A44";  // warna oranye untuk error
+    titleEl.style.color = "#E57A44";
   }
 
-  // Tampilkan detail error di console
   console.error("[app.js] Detail error:", message);
   console.error("[app.js] Pastikan:");
   console.error("  1. File CSV sudah di-copy ke folder project");
   console.error("  2. Script prepare_data.py sudah dijalankan");
-  console.error("  3. Folder data/ berisi 9 file JSON");
+  console.error("  3. Folder data/ berisi semua file JSON yang dibutuhkan");
   console.error("  4. Dashboard dibuka melalui server (bukan file://)");
   console.error("     → Gunakan Live Server di VS Code");
 }
@@ -471,43 +508,34 @@ function initApiKeyModal() {
   const inputKey  = document.getElementById("input-api-key");
   const status    = document.getElementById("modal-status");
 
-  // Buka modal — tambah class .show ke overlay
   function openModal() {
     overlay.classList.add("show");
     status.textContent = "";
     status.className   = "modal-status";
-    // Tampilkan key yang sudah tersimpan jika ada
     if (hasGroqApiKey()) inputKey.value = getGroqApiKey();
     else inputKey.value = "";
     inputKey.focus();
   }
 
-  // Tutup modal — hapus class .show dari overlay
   function closeModal() {
     overlay.classList.remove("show");
     status.textContent = "";
     status.className   = "modal-status";
   }
 
-  // Tombol ⚙ API Key di navbar → buka modal
   if (btnOpen)   btnOpen.addEventListener("click", openModal);
-
-  // Tombol Tutup → tutup modal
   if (btnCancel) btnCancel.addEventListener("click", closeModal);
 
-  // Klik area gelap di luar kotak modal → tutup modal
   if (overlay) {
     overlay.addEventListener("click", (e) => {
       if (e.target === overlay) closeModal();
     });
   }
 
-  // Tekan Escape → tutup modal
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeModal();
   });
 
-  // Tombol Simpan → validasi + simpan ke localStorage
   if (btnSave) {
     btnSave.addEventListener("click", () => {
       const key = inputKey.value.trim();
@@ -523,24 +551,20 @@ function initApiKeyModal() {
         return;
       }
 
-      // Simpan ke localStorage
       setGroqApiKey(key);
 
-      // Tampilkan sukses lalu tutup otomatis 1.5 detik
       status.textContent = "✓ API key berhasil disimpan!";
       status.className   = "modal-status success";
       setTimeout(closeModal, 1500);
     });
   }
 
-  // Enter di input → trigger Simpan
   if (inputKey) {
     inputKey.addEventListener("keydown", (e) => {
       if (e.key === "Enter") btnSave.click();
     });
   }
 
-  // Buka modal otomatis hanya jika API key belum tersimpan
   if (!hasGroqApiKey()) {
     console.log("[app.js] API key belum ada → tampilkan modal");
     openModal();
