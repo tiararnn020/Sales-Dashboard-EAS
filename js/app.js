@@ -489,7 +489,14 @@ function onFiltersChanged() {
   // anotasi chart-title selalu merefleksikan filter yang baru diterapkan.
   if (typeof updateNarrative === "function") updateNarrative();
 
-  updateFilterIndicator();
+  if (typeof renderAllCharts === "function") renderAllCharts();
+
+  // Re-generate narasi otomatis (storyEngine.js — Hari 8) agar judul dan
+  // anotasi chart-title selalu merefleksikan filter yang baru diterapkan.
+  if (typeof updateNarrative === "function") updateNarrative();
+
+  // Badge "Filter aktif" dinonaktifkan — dianggap tidak perlu untuk demo.
+  // updateFilterIndicator();
 }
 
 
@@ -607,10 +614,8 @@ function initApiKeyModal() {
     });
   }
 
-  if (!hasGroqApiKey()) {
-    console.log("[app.js] API key belum ada → tampilkan modal");
-    openModal();
-  } else {
-    console.log("[app.js] API key sudah tersimpan ✓");
-  }
+  // Modal tidak lagi auto-terbuka saat load, karena API key sudah
+  // tertanam langsung di config.js. Modal masih bisa dibuka manual
+  // lewat tombol ⚙ API Key jika suatu saat ingin override.
+  console.log("[app.js] API key sudah tersedia dari config.js ✓");
 }

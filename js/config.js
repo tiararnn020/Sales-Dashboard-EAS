@@ -19,11 +19,12 @@
 // =============================================================================
 const CONFIG = {
 
-  // API key Groq diambil dari localStorage (bukan hardcode di sini)
-  // Gunakan getGroqApiKey() untuk membaca nilainya
-  get GROQ_API_KEY() {
-    return localStorage.getItem("groq_api_key") || "";
-  },
+  // API key Groq di-hardcode langsung agar dashboard bisa langsung
+  // dipakai tanpa meminta input dari user (sesuai requirement dosen).
+  // CATATAN: key ini free tier ($0 billing), jadi risiko terburuk hanya
+  // key di-revoke otomatis oleh Groq jika terdeteksi di repo publik —
+  // bukan risiko finansial.
+  GROQ_API_KEY: "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",
 
   // Model AI Groq yang digunakan
   GROQ_MODEL: "llama-3.1-8b-instant",
@@ -67,7 +68,7 @@ function setGroqApiKey(key) {
  * @returns {string} API key atau "" jika belum ada
  */
 function getGroqApiKey() {
-  return localStorage.getItem("groq_api_key") || "";
+  return CONFIG.GROQ_API_KEY || "";
 }
 
 /**
